@@ -1,0 +1,12 @@
+{{- with .Page -}}
+{{- if .Params.doi -}}
+{{- $href := partial "paper-resolve-doi-href.html" (dict "doi" .Params.doi) | strings.TrimSpace -}}
+<span class="meta-item"><a href="{{ $href }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer" title="{{ .Params.doi }}"><i class="bi bi-link-45deg" aria-hidden="true"></i><span>DOI</span></a></span>
+{{- else if .Params.paperUrl -}}
+<span class="meta-item"><a href="{{ .Params.paperUrl | safeURL }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>{{ .Params.paperUrlLabel | default "Paper" }}</span></a></span>
+{{- else if .Params.paperLinks -}}
+{{- range .Params.paperLinks -}}
+<span class="meta-item"><a href="{{ .url | safeURL }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>{{ .name }}</span></a></span>
+{{- end -}}
+{{- end -}}
+{{- end -}}

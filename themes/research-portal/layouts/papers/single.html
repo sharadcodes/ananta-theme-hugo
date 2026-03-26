@@ -1,0 +1,78 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<article>
+  <h1>{{ .Title }}</h1>
+  
+  <div class="paper-meta">
+    {{ if .Params.authors }}
+    <p>
+      <i class="bi bi-person-fill"></i>
+      <strong>Authors:</strong> {{ delimit .Params.authors ", " }}
+    </p>
+    {{ end }}
+    <p>
+      <i class="bi bi-calendar"></i>
+      <strong>Published:</strong> {{ .Date.Format "January 2006" }}
+    </p>
+    {{ if .Params.doi }}
+    {{- $doiHref := partial "paper-resolve-doi-href.html" (dict "doi" .Params.doi) | strings.TrimSpace -}}
+    <p>
+      <i class="bi bi-link"></i>
+      <strong>DOI:</strong> <a href="{{ $doiHref }}" target="_blank" rel="noopener noreferrer">{{ .Params.doi }}</a>
+    </p>
+    {{ else if .Params.paperUrl }}
+    <p>
+      <i class="bi bi-box-arrow-up-right"></i>
+      <strong>{{ .Params.paperUrlLabel | default "Link" }}:</strong>
+      <a href="{{ .Params.paperUrl | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .Params.paperUrl }}</a>
+    </p>
+    {{ else if .Params.paperLinks }}
+    <div class="paper-meta-extra">
+      <p class="paper-meta-extra__label"><i class="bi bi-box-arrow-up-right"></i> <strong>Links</strong></p>
+      <ul class="paper-meta-link-list">
+        {{ range .Params.paperLinks }}
+        <li><a href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+
+  {{ if .Params.abstract }}
+  <div style="margin-bottom: 2rem;">
+    <h3>Abstract</h3>
+    <p>{{ .Params.abstract }}</p>
+  </div>
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ if .Params.references }}
+  <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <h3>References</h3>
+    <ul style="margin-left: 1.5rem;">
+      {{ range .Params.references }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{ if .Params.tags }}
+  <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <h3>Tags</h3>
+    <div class="tech-stack">
+      {{ range .Params.tags }}
+      <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
+        <i class="bi bi-tag"></i>
+        {{ . }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</article>
+{{ end }}

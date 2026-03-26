@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<article>
+  <h1>{{ .Title }}</h1>
+  
+  <div class="meta">
+    <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ .Date.Format "January 2, 2006" }}</span></span>
+    <span class="meta-item"><i class="bi bi-clock" aria-hidden="true"></i><span>{{ .ReadingTime }} min read</span></span>
+    {{ if .Params.author }}<span class="meta-item"><i class="bi bi-person" aria-hidden="true"></i><span>{{ .Params.author }}</span></span>{{ end }}
+  </div>
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ if .Params.tags }}
+  <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <h3>Tags</h3>
+    <div class="tech-stack">
+      {{ range .Params.tags }}
+      <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
+        <i class="bi bi-tag"></i>
+        {{ . }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</article>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<section>
+  <h2>{{ .Title }}</h2>
+  <ul class="content-list">
+    {{ range where .Site.RegularPages "Type" "experience" }}
+    <li>
+      <h3 style="margin-top: 0; margin-bottom: 0.25rem;">{{ .Title }}</h3>
+      <p style="margin: 0; color: #0066cc; font-weight: 500;">{{ .Params.company }}</p>
+      <p class="experience-period">{{ .Params.period }}</p>
+      <div class="experience-body">
+        {{ .Content }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

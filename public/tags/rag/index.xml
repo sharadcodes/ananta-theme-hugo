@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RAG on Sharad Raj</title>
+    <link>https://example.com/tags/rag/</link>
+    <description>Recent content in RAG on Sharad Raj</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/rag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic RAG Workflows: Building Tool-Using Agents</title>
+      <link>https://example.com/posts/agentic-rag-workflows/</link>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/posts/agentic-rag-workflows/</guid>
+      <description>&lt;p&gt;Retrieval-augmented generation (RAG) has become a cornerstone of modern AI systems,&#xA;enabling language models to access external knowledge bases and provide more accurate,&#xA;contextual responses. However, static RAG systems have limitations when dealing with&#xA;complex queries that require multiple steps or tool interactions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

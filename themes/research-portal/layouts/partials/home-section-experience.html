@@ -1,0 +1,20 @@
+{{ if .Site.Params.showExperience }}
+<section id="experience">
+  <h2>Experience</h2>
+  <ul class="content-list">
+    {{ range (where .Site.RegularPages "Type" "experience" | first .Site.Params.experienceLimit) }}
+    <li>
+      <h3 style="margin-top: 0; margin-bottom: 0.25rem;">{{ .Title }}</h3>
+      <p style="margin: 0; color: #0066cc; font-weight: 500;">{{ .Params.company }}</p>
+      <p class="experience-period">{{ .Params.period }}</p>
+      <div class="experience-body">
+        {{ .Content }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  <a class="section-more-link" href="{{ "experience/" | relLangURL }}">
+    View all experience <i class="bi bi-arrow-right"></i>
+  </a>
+</section>
+{{ end }}

@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<article class="project-single">
+  <header class="project-header">
+    <h1 class="project-header__title">{{ .Title }}</h1>
+    <ul class="project-facts">
+      <li>
+        <i class="bi bi-calendar" aria-hidden="true"></i>
+        <span>{{ partial "project-calendar-caption.html" (dict "Page" .) }}</span>
+      </li>
+      <li>
+        <i class="bi bi-clock" aria-hidden="true"></i>
+        <span><strong>{{ .ReadingTime }}</strong> min read</span>
+      </li>
+      {{ $effStatus := partial "project-effective-status.html" (dict "Page" .) | strings.TrimSpace }}
+      {{ if $effStatus }}
+      <li>
+        <span class="project-status project-status--{{ $effStatus | urlize }}">{{ $effStatus }}</span>
+      </li>
+      {{ end }}
+    </ul>
+
+    {{ if or .Params.repo .Params.live .Params.docs }}
+    <div class="project-actions">
+      {{ if .Params.repo }}
+      <a class="project-action project-action--github" href="{{ .Params.repo }}" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-github" aria-hidden="true"></i>
+        Repository
+      </a>
+      {{ end }}
+      {{ if .Params.live }}
+      <a class="project-action project-action--live" href="{{ .Params.live }}" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-globe" aria-hidden="true"></i>
+        Live demo
+      </a>
+      {{ end }}
+      {{ if .Params.docs }}
+      <a class="project-action project-action--docs" href="{{ .Params.docs }}" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-book" aria-hidden="true"></i>
+        Documentation
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  {{ if .Params.technologies }}
+  <section class="project-tech-card" aria-labelledby="project-tech-heading">
+    <h2 id="project-tech-heading" class="project-tech-card__title">Technology</h2>
+    <div class="tech-stack project-tech-card__stack">
+      {{ range .Params.technologies }}
+      <span class="tag tag--tech">
+        <i class="bi bi-cpu" aria-hidden="true"></i>
+        {{ . }}
+      </span>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ if .Params.tags }}
+  <footer class="article-end">
+    <h2 class="article-end__title">Tags</h2>
+    <div class="tech-stack">
+      {{ range .Params.tags }}
+      <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag tag--link" >
+        <i class="bi bi-tag" aria-hidden="true"></i>
+        {{ . }}
+      </a>
+      {{ end }}
+    </div>
+  </footer>
+  {{ end }}
+</article>
+{{ end }}

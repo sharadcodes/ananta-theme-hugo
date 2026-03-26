@@ -1,0 +1,33 @@
+<footer>
+  <p>
+    {{ if .Site.Params.twitter }}
+    <a href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-twitter"></i> Twitter
+    </a>
+    {{ end }}
+    {{ if .Site.Params.linkedin }}
+    <a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-linkedin"></i> LinkedIn
+    </a>
+    {{ end }}
+    {{ if .Site.Params.googleScholar }}
+    {{ $gs := .Site.Params.googleScholar }}
+    <a href="{{ if or (hasPrefix $gs "http://") (hasPrefix $gs "https://") }}{{ $gs }}{{ else }}https://scholar.google.com/citations?user={{ $gs }}{{ end }}" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-mortarboard"></i> Google Scholar
+    </a>
+    {{ end }}
+    {{ if .Site.Params.github }}
+    <a href="https://github.com/{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-github"></i> GitHub
+    </a>
+    {{ end }}
+    {{ if .Site.Params.email }}
+    <a href="mailto:{{ .Site.Params.email }}">
+      <i class="bi bi-envelope"></i> Email
+    </a>
+    {{ end }}
+  </p>
+  <p style="margin-top: 1rem; font-size: 0.85rem;">
+    © {{ now.Year }} {{ .Site.Title }}. Built with <a href="https://gohugo.io" target="_blank">Hugo</a>.
+  </p>
+</footer>

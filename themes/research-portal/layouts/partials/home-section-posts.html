@@ -1,0 +1,33 @@
+{{ if .Site.Params.showPosts }}
+<section id="posts">
+  <h2>Posts</h2>
+  <ul class="content-list">
+    {{ range where .Site.RegularPages "Type" "posts" | first 10 }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        <i class="bi bi-arrow-right"></i>
+        {{ .Title }}
+      </a>
+      <p>{{ .Plain | strings.Truncate 170 }}</p>
+      <div class="meta">
+        <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ .Date.Format "Jan 2, 2006" }}</span></span>
+        <span class="meta-item"><i class="bi bi-clock" aria-hidden="true"></i><span>{{ .ReadingTime }} min read</span></span>
+      </div>
+      {{ if .Params.tags }}
+      <div class="tech-stack" style="margin-top: 0.5rem;">
+        {{ range .Params.tags }}
+        <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
+          <i class="bi bi-tag"></i>
+          {{ . }}
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  <a class="section-more-link" href="{{ "posts/" | relLangURL }}">
+    More posts <i class="bi bi-arrow-right"></i>
+  </a>
+</section>
+{{ end }}

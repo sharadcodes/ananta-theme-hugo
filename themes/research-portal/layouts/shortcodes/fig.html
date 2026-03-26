@@ -1,0 +1,17 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- if not $src -}}{{ errorf "fig shortcode: missing src" }}{{- end -}}
+{{- $alt := .Get "alt" | default (.Get 1) | default "" -}}
+{{- $caption := .Get "caption" | default (.Get 2) | default "" -}}
+{{- $href := .Get "href" | default (.Get "link") -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $isAbsURL := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
+{{- $imgSrc := cond $isAbsURL $src (relURL $src) -}}
+<figure class="content-fig{{ if $class }} {{ $class }}{{ end }}">
+  {{- if $href -}}
+  <a href="{{ $href | safeURL }}" class="content-fig__link">{{- end -}}
+  <img src="{{ $imgSrc | safeURL }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+  {{- if $href -}}</a>{{- end -}}
+  {{- if $caption -}}
+  <figcaption class="content-fig__caption">{{ $caption | markdownify }}</figcaption>
+  {{- end -}}
+</figure>

@@ -1,0 +1,33 @@
+{{ if .Site.Params.showPapers }}
+<section id="papers">
+  <h2>Research Papers</h2>
+  <ul class="content-list">
+    {{ range where .Site.RegularPages "Type" "papers" | first 10 }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        <i class="bi bi-arrow-right"></i>
+        {{ .Title }}
+      </a>
+      <p>{{ .Plain | strings.Truncate 170 }}</p>
+      {{ if or .Params.doi .Params.paperUrl .Params.paperLinks }}
+      <div class="meta-group">
+        <div class="meta">
+          <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ .Date.Format "2006" }}</span></span>
+        </div>
+        <div class="meta meta--row2">
+          {{ partial "paper-meta-links.html" (dict "Page" .) }}
+        </div>
+      </div>
+      {{ else }}
+      <div class="meta">
+        <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ .Date.Format "2006" }}</span></span>
+      </div>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  <a class="section-more-link" href="{{ "papers/" | relLangURL }}">
+    More research papers <i class="bi bi-arrow-right"></i>
+  </a>
+</section>
+{{ end }}

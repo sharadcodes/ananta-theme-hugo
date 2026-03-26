@@ -1,0 +1,34 @@
+<header>
+  <div class="header-top">
+    <div class="header-intro">
+      <h1><a href="{{ site.Home.RelPermalink }}" class="site-title-link">{{ .Site.Title }}</a></h1>
+      {{ if .Site.Params.tagline }}<p>{{ .Site.Params.tagline }}</p>{{ end }}
+    </div>
+    {{ if .Site.Params.profileImage }}
+    {{ $profileImage := .Site.Params.profileImage }}
+    {{ $profileImageFit := .Site.Params.profileImageFit | default "cover" | lower }}
+    <div class="profile-banner profile-fit-{{ $profileImageFit }}">
+      <img
+        src="{{ if or (hasPrefix $profileImage "http://") (hasPrefix $profileImage "https://") }}{{ $profileImage }}{{ else }}{{ $profileImage | relURL }}{{ end }}"
+        alt="{{ .Site.Params.profileImageAlt | default (print .Site.Title " profile photo") }}"
+      />
+    </div>
+    {{ end }}
+  </div>
+  <nav class="nav-links">
+    {{ $p := . }}
+    {{ $order := .Site.Params.navOrder | default (slice "posts" "papers" "projects" "about") }}
+    {{ range $order }}
+      {{ $k := . | lower }}
+      {{ if eq $k "posts" }}
+    <li><a href="{{ "posts/" | relLangURL }}"><i class="bi bi-pencil-square"></i> Posts</a></li>
+      {{ else if eq $k "papers" }}
+    <li><a href="{{ "papers/" | relLangURL }}"><i class="bi bi-file-earmark-pdf"></i> Papers</a></li>
+      {{ else if eq $k "projects" }}
+    <li><a href="{{ "projects/" | relLangURL }}"><i class="bi bi-briefcase"></i> Projects</a></li>
+      {{ else if and (eq $k "about") (not $p.IsHome) }}
+    <li><a href="{{ "about/" | relLangURL }}"><i class="bi bi-info-circle"></i> About</a></li>
+      {{ end }}
+    {{ end }}
+  </nav>
+</header>

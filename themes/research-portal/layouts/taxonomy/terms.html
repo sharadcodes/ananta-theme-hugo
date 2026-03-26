@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
+<section>
+  <h2><i class="bi bi-tags"></i> All Tags</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+    {{ range .Data.Terms.Alphabetical }}
+    <div style="flex: 0 1 calc(50% - 0.5rem);">
+      <h3 style="margin-top: 0; margin-bottom: 0.5rem;">
+        <a href="{{ .Page.RelPermalink }}">
+          <i class="bi bi-tag"></i> {{ .Page.Title }}
+        </a>
+      </h3>
+      <p style="margin: 0; color: #666; font-size: 0.9rem;">
+        {{ .Count }} item{{ if ne .Count 1 }}s{{ end }}
+      </p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

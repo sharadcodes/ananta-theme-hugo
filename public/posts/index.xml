@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sharad Raj</title>
+    <link>https://example.com/posts/</link>
+    <description>Recent content in Posts on Sharad Raj</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog authoring showcase (math, figures, code, markdown)</title>
+      <link>https://example.com/posts/blog-authoring-showcase/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/posts/blog-authoring-showcase/</guid>
+      <description>&lt;p&gt;This post is a &lt;strong&gt;living reference&lt;/strong&gt; for everything you can drop into a normal article: front matter, math, the &lt;code&gt;fig&lt;/code&gt; shortcode, plain images, highlighted code with line numbers, links, lists, and quotes. Copy the fenced blocks into your own &lt;code&gt;.md&lt;/code&gt; files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic RAG Workflows: Building Tool-Using Agents</title>
+      <link>https://example.com/posts/agentic-rag-workflows/</link>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/posts/agentic-rag-workflows/</guid>
+      <description>&lt;p&gt;Retrieval-augmented generation (RAG) has become a cornerstone of modern AI systems,&#xA;enabling language models to access external knowledge bases and provide more accurate,&#xA;contextual responses. However, static RAG systems have limitations when dealing with&#xA;complex queries that require multiple steps or tool interactions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MLOps for LLM Services: CI/CD and Deployment Patterns</title>
+      <link>https://example.com/posts/mlops-llm-services/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/posts/mlops-llm-services/</guid>
+      <description>&lt;p&gt;Deploying large language models in production requires more than just containerization.&#xA;It demands a comprehensive MLOps strategy that addresses model versioning, performance monitoring,&#xA;and continuous improvement.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-mlops-pipeline&#34;&gt;The MLOps Pipeline&lt;/h2&gt;&#xA;&lt;p&gt;A robust MLOps pipeline for LLM services includes:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

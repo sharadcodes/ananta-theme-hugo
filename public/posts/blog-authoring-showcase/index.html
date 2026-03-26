@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog authoring showcase (math, figures, code, markdown) | Sharad Raj</title>
+  <link rel="stylesheet" href="/css/chroma-github.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+  <style>
+    body {
+      font-family: 'Alegreya', serif;
+    }
+  </style>
+  
+
+</head>
+<body class="">
+  <header>
+  <div class="header-top">
+    <div class="header-intro">
+      <h1><a href="/" class="site-title-link">Sharad Raj</a></h1>
+      <p>AI Research &amp; Engineering</p>
+    </div>
+    
+    
+    
+    <div class="profile-banner profile-fit-contain">
+      <img
+        src="https://avatars2.githubusercontent.com/u/36638057?s=460&amp;u=0cbe4fd6b5a3655d91b3eb86db834d0829a0c086&amp;v=4"
+        alt="Sharad Raj profile photo"
+      />
+    </div>
+    
+  </div>
+  <nav class="nav-links">
+    
+    
+    
+      
+      
+    <li><a href="/posts/"><i class="bi bi-pencil-square"></i> Posts</a></li>
+      
+    
+      
+      
+    <li><a href="/papers/"><i class="bi bi-file-earmark-pdf"></i> Papers</a></li>
+      
+    
+      
+      
+    <li><a href="/projects/"><i class="bi bi-briefcase"></i> Projects</a></li>
+      
+    
+      
+      
+    <li><a href="/about/"><i class="bi bi-info-circle"></i> About</a></li>
+      
+    
+  </nav>
+</header>
+
+  
+  <main>
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list"><li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li><li class="breadcrumb-item">
+      <a href="/posts/">Posts</a>
+    </li><li class="breadcrumb-item breadcrumb-current" aria-current="page">Blog authoring showcase (math, figures, code, markdown)</li>
+  </ol>
+</nav>
+
+<article>
+  <h1>Blog authoring showcase (math, figures, code, markdown)</h1>
+  
+  <div class="meta">
+    <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>March 26, 2026</span></span>
+    <span class="meta-item"><i class="bi bi-clock" aria-hidden="true"></i><span>3 min read</span></span>
+    <span class="meta-item"><i class="bi bi-person" aria-hidden="true"></i><span>Sharad Raj</span></span>
+  </div>
+
+  <div class="content">
+    <p>This post is a <strong>living reference</strong> for everything you can drop into a normal article: front matter, math, the <code>fig</code> shortcode, plain images, highlighted code with line numbers, links, lists, and quotes. Copy the fenced blocks into your own <code>.md</code> files.</p>
+<hr>
+<h2 id="1-front-matter-yaml">1. Front matter (YAML)</h2>
+<p>Every post starts with metadata between <code>---</code> lines:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Your title&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2026-03-26</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Your Name&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;TagOne&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;TagTwo&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c"># load KaTeX on this page only (site default can be false)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong><code>tags</code></strong>: show under the post and on <code>/tags/…</code> pages.</li>
+<li><strong><code>params.math: true</code></strong>: required for LaTeX below unless you set <code>math = true</code> globally in <code>config.toml</code>.</li>
+</ul>
+<hr>
+<h2 id="2-math-katex">2. Math (KaTeX)</h2>
+<p><strong>Inline</strong> (same line as text), use <code>\(</code> … <code>\)</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The loss is \( \mathcal{L} = -\sum_i y_i \log \hat{y}_i \).
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Live: The loss is \( \mathcal{L} = -\sum_i y_i \log \hat{y}_i \).</p>
+<p><strong>Display block</strong> with <code>\[ … \]</code> or <code>$$ … $$</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\[
+</span></span><span class="line"><span class="cl">\mathrm{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}
+</span></span><span class="line"><span class="cl">\]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Live:</p>
+\[
+\mathrm{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}
+\]<hr>
+<h2 id="3-captions-fig-shortcode">3. Captions: <code>fig</code> shortcode</h2>
+<p>Hugo runs <strong>shortcodes before Markdown</strong>, so putting <code>fig</code> shortcode markup inside ordinary fenced code blocks still <strong>executes</strong> the shortcode. The copy-paste examples below use raw HTML with <code>&amp;lt;</code> so the line shows up literally (what you copy is normal angle brackets).</p>
+<p><strong>Named arguments</strong> (easiest to read):</p>
+<pre class="content-sample"><code>{{&lt; fig src="/images/rag-pipeline.svg" alt="Short description for accessibility" caption="Caption text; **markdown** works here." >}}</code></pre>
+<p>Live:</p>
+<figure class="content-fig"><img src="/images/rag-pipeline.svg" alt="RAG pipeline diagram" loading="lazy" decoding="async" /><figcaption class="content-fig__caption"><strong>fig</strong> shortcode: lazy-loaded image + caption.</figcaption></figure>
+
+<p><strong>Positional</strong> (<code>src</code>, <code>alt</code>, <code>caption</code> in order):</p>
+<pre class="content-sample"><code>{{&lt; fig "/images/rag-pipeline.svg" "Alt text" "Optional caption." >}}</code></pre>
+<p><strong>Clickable image</strong> (opens URL in a new context—use full URLs for external assets):</p>
+<pre class="content-sample"><code>{{&lt; fig src="/images/rag-pipeline.svg" alt="Diagram" caption="Thumbnail linking out" href="https://gohugo.io" >}}</code></pre>
+<hr>
+<h2 id="4-plain-markdown-image">4. Plain markdown image</h2>
+<p>File lives under <strong><code>static/</code></strong>; URL starts at site root:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">![Alt text only](/images/rag-pipeline.svg)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Live:</p>
+<p><img src="/images/rag-pipeline.svg" alt="Plain markdown image"></p>
+<hr>
+<h2 id="5-code-fences-syntax--line-numbers">5. Code fences (syntax + line numbers)</h2>
+<p>Use a <strong>language</strong> right after the opening backticks. Hugo/Chroma adds colors and a gutter.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl">    <span class="n">m</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exps</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">z</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">exps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="o">/</span> <span class="n">s</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exps</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Highlight specific lines</strong> (optional fence options — array syntax as in <a href="https://gohugo.io/content-management/syntax-highlighting/#highlighting-in-code-fences">Hugo docs</a>):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="hl"><span class="lnt">2
+</span></span><span class="lnt">3
+</span><span class="hl"><span class="lnt">4
+</span></span><span class="hl"><span class="lnt">5
+</span></span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">line_one</span><span class="p">():</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">def</span> <span class="nf">line_two_highlighted</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">2</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">def</span> <span class="nf">line_three</span><span class="p">():</span>
+</span></span><span class="line hl"><span class="cl">        <span class="k">return</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">line_four_highlighted</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Shell</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D --bind 127.0.0.1 --port <span class="m">1313</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Inline code</strong>: wrap with single backticks: <code>params.math</code>, <code>relURL</code>, <code>config.toml</code>.</p>
+<hr>
+<h2 id="6-writing--structure">6. Writing &amp; structure</h2>
+<p><strong>Links:</strong> <a href="https://gohugo.io/documentation/">Hugo docs</a></p>
+<p><strong>Emphasis:</strong> <em>italic</em>, <strong>bold</strong>, <em><strong>both</strong></em>.</p>
+<p><strong>List:</strong></p>
+<ul>
+<li>bullets</li>
+<li>second item</li>
+</ul>
+<p><strong>Numbered:</strong></p>
+<ol>
+<li>first</li>
+<li>second</li>
+</ol>
+<p><strong>Blockquote:</strong></p>
+<blockquote>
+<p>Use for callouts or citations.</p></blockquote>
+<p><strong>Rule:</strong></p>
+<hr>
+<h2 id="7-quick-checklist">7. Quick checklist</h2>
+<table>
+  <thead>
+      <tr>
+          <th>You want</th>
+          <th>What to do</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Equations</td>
+          <td><code>params.math: true</code> plus <code>\(</code> <code>\[</code> or <code>$$</code> (see §2)</td>
+      </tr>
+      <tr>
+          <td>Diagram with caption</td>
+          <td><code>fig</code> shortcode — see §3 for full snippet</td>
+      </tr>
+      <tr>
+          <td>Photo from <code>/static</code></td>
+          <td>Markdown <code>![alt](/images/file.jpg)</code></td>
+      </tr>
+      <tr>
+          <td>Code with highlighting</td>
+          <td>Fenced block with a language tag (see §5)</td>
+      </tr>
+      <tr>
+          <td>Tags on the post</td>
+          <td><code>tags: [&quot;a&quot;,&quot;b&quot;]</code> in front matter</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><em>Tip: open <code>content/posts/blog-authoring-showcase.md</code> in your editor to compare raw markdown with this rendered page.</em></p>
+
+  </div>
+
+  
+  <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <h3>Tags</h3>
+    <div class="tech-stack">
+      
+      <a href="/tags/hugo/" class="tag" style="text-decoration: none;">
+        <i class="bi bi-tag"></i>
+        Hugo
+      </a>
+      
+      <a href="/tags/markdown/" class="tag" style="text-decoration: none;">
+        <i class="bi bi-tag"></i>
+        Markdown
+      </a>
+      
+      <a href="/tags/meta/" class="tag" style="text-decoration: none;">
+        <i class="bi bi-tag"></i>
+        Meta
+      </a>
+      
+    </div>
+  </div>
+  
+</article>
+
+  </main>
+
+  <footer>
+  <p>
+    
+    <a href="https://twitter.com/sharadraj" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-twitter"></i> Twitter
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/sharadraj" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-linkedin"></i> LinkedIn
+    </a>
+    
+    
+    
+    <a href="https://scholar.google.com/citations?user=lMMbNBMAAAAJ" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-mortarboard"></i> Google Scholar
+    </a>
+    
+    
+    <a href="https://github.com/sharadraj" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-github"></i> GitHub
+    </a>
+    
+    
+    <a href="mailto:hello@sharadraj.com">
+      <i class="bi bi-envelope"></i> Email
+    </a>
+    
+  </p>
+  <p style="margin-top: 1rem; font-size: 0.85rem;">
+    © 2026 Sharad Raj. Built with <a href="https://gohugo.io" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "\\[", right: "\\]", display: true },
+      { left: "$$", right: "$$", display: true },
+      { left: "\\(", right: "\\)", display: false },
+    ],
+    throwOnError: false,
+  });
+</script>
+
+</body>
+</html>

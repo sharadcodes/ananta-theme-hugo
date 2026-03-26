@@ -1,0 +1,30 @@
+{{ if .Site.Params.showProjects }}
+<section id="projects">
+  <h2>Projects</h2>
+  <ul class="content-list">
+    {{ range where .Site.RegularPages "Type" "projects" | first 10 }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        <i class="bi bi-arrow-right"></i>
+        {{ .Title }}
+      </a>
+      <p>{{ .Plain | strings.Truncate 170 }}</p>
+      <div class="meta-group">
+        <div class="meta">
+          <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ partial "project-calendar-caption.html" (dict "Page" . "dateFormat" "Jan 2006") | strings.TrimSpace }}</span></span>
+          <span class="meta-item"><i class="bi bi-check-circle" aria-hidden="true"></i><span>{{ partial "project-effective-status.html" (dict "Page" .) | strings.TrimSpace }}</span></span>
+        </div>
+        {{ if or .Params.repo .Params.live .Params.docs }}
+        <div class="meta meta--row2">
+          {{ partial "project-meta-links.html" (dict "Page" .) }}
+        </div>
+        {{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  <a class="section-more-link" href="{{ "projects/" | relLangURL }}">
+    More projects <i class="bi bi-arrow-right"></i>
+  </a>
+</section>
+{{ end }}

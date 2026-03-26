@@ -1,0 +1,6 @@
+{{- $d := .doi | strings.TrimSpace -}}
+{{- if or (hasPrefix $d "http://") (hasPrefix $d "https://") -}}
+{{ $d | safeURL }}
+{{- else -}}
+https://doi.org/{{ $d }}
+{{- end -}}

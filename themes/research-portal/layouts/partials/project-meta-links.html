@@ -1,0 +1,5 @@
+{{- with .Page -}}
+{{- with .Params.repo -}}<span class="meta-item"><a href="{{ . | safeURL }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i><span>Code</span></a></span>{{ end -}}
+{{- with .Params.live -}}<span class="meta-item"><a href="{{ . | safeURL }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-globe" aria-hidden="true"></i><span>Demo</span></a></span>{{ end -}}
+{{- with .Params.docs -}}<span class="meta-item"><a href="{{ . | safeURL }}" class="meta-inline-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-book" aria-hidden="true"></i><span>Docs</span></a></span>{{ end -}}
+{{- end -}}

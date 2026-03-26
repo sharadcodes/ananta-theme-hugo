@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scaling on Sharad Raj</title>
+    <link>https://example.com/tags/scaling/</link>
+    <description>Recent content in Scaling on Sharad Raj</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/scaling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Efficient Scaling of Agentic AI Systems in Production</title>
+      <link>https://example.com/papers/agentic-scaling/</link>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/papers/agentic-scaling/</guid>
+      <description>&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;&#xA;&lt;p&gt;The deployment of agentic AI systems at scale presents unique challenges in terms of latency,&#xA;cost, and reliability. Traditional approaches to scaling monolithic systems often fail when applied&#xA;to distributed agentic architectures.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

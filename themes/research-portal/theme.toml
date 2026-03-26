@@ -1,0 +1,12 @@
+name = "Research Portal"
+license = "MIT"
+licenselink = "https://github.com/sharadraj/research-portal-theme/blob/master/LICENSE"
+description = "A minimal, research-oriented Hugo theme with Bootstrap Icons"
+homepage = "https://github.com/sharadraj/research-portal-theme"
+tags = ["research", "academic", "minimal", "blog", "portfolio", "tags"]
+features = ["responsive", "icons", "taxonomies", "breadcrumbs"]
+min_version = "0.87.0"
+
+[author]
+name = "Sharad Raj"
+homepage = "https://sharadraj.com"

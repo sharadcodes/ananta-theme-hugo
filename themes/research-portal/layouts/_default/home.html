@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $home := . }}
+{{ $order := .Site.Params.homeSectionOrder | default (slice "about" "experience" "posts" "papers" "projects") }}
+{{ range $order }}
+  {{ $key := . | lower }}
+  {{ if eq $key "about" }}
+    {{ partial "home-section-about.html" $home }}
+  {{ else if eq $key "experience" }}
+    {{ partial "home-section-experience.html" $home }}
+  {{ else if eq $key "posts" }}
+    {{ partial "home-section-posts.html" $home }}
+  {{ else if eq $key "papers" }}
+    {{ partial "home-section-papers.html" $home }}
+  {{ else if eq $key "projects" }}
+    {{ partial "home-section-projects.html" $home }}
+  {{ end }}
+{{ end }}
+{{ end }}

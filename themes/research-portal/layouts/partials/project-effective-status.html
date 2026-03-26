@@ -1,0 +1,21 @@
+{{- $p := .Page -}}
+{{- with $p -}}
+{{- if .Params.status -}}
+{{ .Params.status }}
+{{- else -}}
+{{- $now := now -}}
+{{- $s := false -}}
+{{- with .Params.startDate }}{{ $s = time.AsTime . }}{{ end -}}
+{{- $e := false -}}
+{{- with .Params.endDate }}{{ $e = time.AsTime . }}{{ end -}}
+{{- if and $s ($s.After $now) -}}
+Planned
+{{- else if not $e -}}
+Active
+{{- else if ($e.Before $now) -}}
+Completed
+{{- else -}}
+Active
+{{- end -}}
+{{- end -}}
+{{- end -}}

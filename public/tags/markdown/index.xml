@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Sharad Raj</title>
+    <link>https://example.com/tags/markdown/</link>
+    <description>Recent content in Markdown on Sharad Raj</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog authoring showcase (math, figures, code, markdown)</title>
+      <link>https://example.com/posts/blog-authoring-showcase/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/posts/blog-authoring-showcase/</guid>
+      <description>&lt;p&gt;This post is a &lt;strong&gt;living reference&lt;/strong&gt; for everything you can drop into a normal article: front matter, math, the &lt;code&gt;fig&lt;/code&gt; shortcode, plain images, highlighted code with line numbers, links, lists, and quotes. Copy the fenced blocks into your own &lt;code&gt;.md&lt;/code&gt; files.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

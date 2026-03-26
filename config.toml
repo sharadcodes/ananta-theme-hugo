@@ -1,0 +1,69 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "Sharad Raj"
+theme = "research-portal"
+summaryLength = 30
+
+[params]
+  tagline = "AI Research & Engineering"
+  # Optional rectangular profile image at top.
+  # Put your image in /static/images and set path like "images/profile.jpg"
+  profileImage = "https://avatars2.githubusercontent.com/u/36638057?s=460&u=0cbe4fd6b5a3655d91b3eb86db834d0829a0c086&v=4"
+  profileImageAlt = "Sharad Raj profile photo"
+  # profileImageFit options:
+  # - "fill"    : stretch to fill full rectangle
+  # - "contain" : keep original aspect ratio
+  # - "cover"   : fill rectangle with crop (default)
+  profileImageFit = "contain"
+  showPosts = true
+  showPapers = true
+  showProjects = true
+  showExperience = true
+  # Number of recent experiences to show on homepage (0 to hide)
+  experienceLimit = 2
+
+  # Homepage section order (top to bottom). Valid keys: about, experience, posts, papers, projects
+  # Omit a key to hide that block entirely (except about has no show flag—remove from list to hide).
+  homeSectionOrder = ["about", "experience", "posts", "papers", "projects"]
+
+  # Header nav order (left to right). Valid keys: posts, papers, projects, about (home uses site title link)
+  # Omit a key to hide that link. "about" is hidden automatically on the homepage.
+  navOrder = ["posts", "papers", "projects", "about"]
+  
+  # Social Links
+  twitter = "sharadraj"
+  linkedin = "sharadraj"
+  # Google Scholar: the user= value from your profile URL, or paste the full profile URL
+  googleScholar = "lMMbNBMAAAAJ"
+  github = "sharadraj"
+  email = "hello@sharadraj.com"
+  # KaTeX: false = load only on pages with `params.math: true` in front matter; true = every page
+  math = false
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Allow ```lang { hl_lines=[...] } and similar on fenced blocks
+[markup.goldmark.parser.attribute]
+  block = true
+  title = true
+
+# LaTeX math: passthrough keeps \( \) \[ \] $$ intact for KaTeX (see layouts/partials/math.html)
+[markup.goldmark.extensions.passthrough]
+  enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+  block = [['\[', '\]'], ['$$', '$$']]
+  inline = [['\(', '\)']]
+
+# Syntax highlighting (Chroma). Line numbers on; colors from themes/research-portal/static/css/chroma-github.css
+# Regenerate after changing style: hugo gen chromastyles --style=github > themes/research-portal/static/css/chroma-github.css
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  lineNos = true
+  lineNumbersInTable = true
+  anchorLineNos = false
+  noClasses = false
+  style = "github"
+  tabWidth = 4

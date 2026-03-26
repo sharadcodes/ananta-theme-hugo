@@ -1,0 +1,19 @@
+{{- $p := .Page -}}
+{{- $df := .dateFormat | default "Jan 2, 2006" -}}
+{{- with $p -}}
+{{- $s := false -}}
+{{- with .Params.startDate }}{{ $s = time.AsTime . }}{{ end -}}
+{{- $e := false -}}
+{{- with .Params.endDate }}{{ $e = time.AsTime . }}{{ end -}}
+{{- if and $s $e -}}
+{{ $s.Format $df }} – {{ $e.Format $df }}
+{{- else if $s -}}
+{{ $s.Format $df }} – present
+{{- else if $e -}}
+Until {{ $e.Format $df }}
+{{- else if .Params.year -}}
+{{ .Params.year }}
+{{- else -}}
+{{ .Date.Format $df }}
+{{- end -}}
+{{- end -}}
