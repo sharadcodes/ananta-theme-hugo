@@ -1,6 +1,10 @@
-# Research Portal Hugo theme
+# Ananta Theme Hugo
 
 Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/specimen/Alegreya) and [Bootstrap Icons](https://icons.getbootstrap.com/). Suited to academics and engineers who want a small, readable portfolio.
+
+### About the name *Ananta* (Hindi / Sanskrit)
+
+In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* (“end” / “limit”), so it literally means **“without end.”** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. In Hindi you may see it explained as **जो कभी समाप्त न हो** — *jo kabhi samāpt na ho* (“that which never finishes”). The same idea appears in related Indian languages with similar spelling and sense. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed “stopping point.”
 
 ## Features
 
@@ -14,7 +18,7 @@ Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/s
 
 ## Installation
 
-1. Copy or clone the theme into `themes/research-portal` (or add as a submodule).
+1. Copy or clone the theme into `themes/ananta-theme-hugo` (or add as a submodule).
 
 2. In `config.toml`:
 
@@ -22,7 +26,7 @@ Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/s
 baseURL = "https://example.com/"
 languageCode = "en-us"
 title = "Your Name"
-theme = "research-portal"
+theme = "ananta-theme-hugo"
 summaryLength = 30
 
 [params]
@@ -215,7 +219,7 @@ Generated sections (default paths):
 
 ## Customization
 
-- **Colors, spacing, mobile rules**: `themes/research-portal/static/css/style.css`
+- **Colors, spacing, mobile rules**: `themes/ananta-theme-hugo/static/css/style.css`
 - **Font**: `layouts/_default/baseof.html` (Google Fonts link)
 - **Icons**: [Bootstrap Icons](https://icons.getbootstrap.com/) — theme uses names like `bi-house`, `bi-mortarboard` (Scholar), etc.
 

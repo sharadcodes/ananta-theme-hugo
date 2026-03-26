@@ -1,6 +1,6 @@
-# Research Portal — example Hugo site
+# Ananta Theme Hugo — example site
 
-Example site using the **Research Portal** theme (`themes/research-portal/`).
+Example site using the **Ananta Theme Hugo** theme (`themes/ananta-theme-hugo/`). The theme name **Ananta** comes from Hindi/Sanskrit **अनन्त** (*anant*), meaning **without end** — infinite or boundless. See **`themes/ananta-theme-hugo/README.md`** for a short note on the word.
 
 ## Quick start
 
@@ -36,7 +36,7 @@ Output goes to `public/` for deployment (GitHub Pages, Netlify, Vercel, any stat
 │   ├── projects/               # Projects
 │   └── experience/             # CV / roles
 └── themes/
-    └── research-portal/        # Theme (layouts, static CSS, README)
+    └── ananta-theme-hugo/        # Theme (layouts, static CSS, README)
 ```
 
 ## New content
@@ -52,8 +52,8 @@ For a **single reference post** (math, `fig`, images, code, line highlights, mar
 
 ## Configuration
 
-See `config.toml` for a working example. Full parameter list and behavior: **`themes/research-portal/README.md`**.
+See `config.toml` for a working example. Full parameter list and behavior: **`themes/ananta-theme-hugo/README.md`**.
 
 ## Theme documentation
 
-**[themes/research-portal/README.md](themes/research-portal/README.md)** — installation, front matter, `homeSectionOrder`, `navOrder`, social links (including Google Scholar), tags, and customization.
+**[themes/ananta-theme-hugo/README.md](themes/ananta-theme-hugo/README.md)** — installation, front matter, `homeSectionOrder`, `navOrder`, social links (including Google Scholar), tags, and customization.

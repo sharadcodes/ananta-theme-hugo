@@ -1,8 +1,7 @@
-name = "Research Portal"
+name = "Ananta Theme Hugo"
 license = "MIT"
-licenselink = "https://github.com/sharadraj/research-portal-theme/blob/master/LICENSE"
+licenselink = "https://opensource.org/licenses/MIT"
 description = "A minimal, research-oriented Hugo theme with Bootstrap Icons"
-homepage = "https://github.com/sharadraj/research-portal-theme"
 tags = ["research", "academic", "minimal", "blog", "portfolio", "tags"]
 features = ["responsive", "icons", "taxonomies", "breadcrumbs"]
 min_version = "0.87.0"

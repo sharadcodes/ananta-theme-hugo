@@ -1,7 +1,7 @@
 baseURL = "https://example.com/"
 languageCode = "en-us"
 title = "Sharad Raj"
-theme = "research-portal"
+theme = "ananta-theme-hugo"
 summaryLength = 30
 
 [params]
@@ -56,8 +56,8 @@ summaryLength = 30
   block = [['\[', '\]'], ['$$', '$$']]
   inline = [['\(', '\)']]
 
-# Syntax highlighting (Chroma). Line numbers on; colors from themes/research-portal/static/css/chroma-github.css
-# Regenerate after changing style: hugo gen chromastyles --style=github > themes/research-portal/static/css/chroma-github.css
+# Syntax highlighting (Chroma). Line numbers on; colors from themes/ananta-theme-hugo/static/css/chroma-github.css
+# Regenerate after changing style: hugo gen chromastyles --style=github > themes/ananta-theme-hugo/static/css/chroma-github.css
 [markup.highlight]
   codeFences = true
   guessSyntax = true
