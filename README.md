@@ -1,10 +1,13 @@
 # Ananta Theme Hugo
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Hugo](https://img.shields.io/badge/Hugo-0.145.0+-blue.svg)](https://gohugo.io)
+
 Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/specimen/Alegreya) and [Bootstrap Icons](https://icons.getbootstrap.com/). Suited to academics and engineers who want a small, readable portfolio.
 
-### About the name *Ananta* (Hindi / Sanskrit)
+## About the name *Ananta* (Hindi / Sanskrit)
 
-In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* (“end” / “limit”), so it literally means **“without end.”** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. In Hindi you may see it explained as **जो कभी समाप्त न हो** — *jo kabhi samāpt na ho* (“that which never finishes”). The same idea appears in related Indian languages with similar spelling and sense. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed “stopping point.”
+In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* ("end" / "limit"), so it literally means **"without end."** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. In Hindi you may see it explained as **जो कभी समाप्त न हो** — *jo kabhi samāpt na ho* ("that which never finishes"). The same idea appears in related Indian languages with similar spelling and sense. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed "stopping point."
 
 ## Features
 
@@ -15,29 +18,67 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 - Optional **profile image** in the header (URL or static path); fit modes `fill`, `contain`, `cover`
 - **Footer social links**: Twitter/X, LinkedIn, **Google Scholar**, GitHub, email
 - **Responsive layout**: mobile header with centered block, larger tap targets, homepage shows **photo above title** on narrow viewports
+- **Math support**: KaTeX for LaTeX equations
+- **Code highlighting**: Chroma with line numbers and language-specific styling
+- **Lazy-loaded images** and optimized performance
 
-## Repository layout
+## Quick Start
 
-This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo.toml` live at the repo root. A full demo site lives under [`exampleSite/`](exampleSite/). To build it locally, link the theme name to the repo root (Hugo resolves `theme = "ananta-theme-hugo"` from `exampleSite/themes/`):
+### Try the demo locally
 
-- **Windows (PowerShell):** `./scripts/prepare-example-site.ps1`
-- **macOS / Linux:** `bash ./scripts/prepare-example-site.sh`
+This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo.toml` live at the repo root. A full demo site lives under [`exampleSite/`](exampleSite/).
 
-Then:
+**Prerequisites:** [Hugo 0.145.0+](https://gohugo.io/installation/) (extended)
 
-```bash
-cd exampleSite && hugo server
-```
+**Setup:**
 
-## Listing on themes.gohugo.io
+1. Clone or download this repository
+2. Link the theme to the example site:
+   - **Windows (PowerShell):** `./scripts/prepare-example-site.ps1`
+   - **macOS / Linux:** `bash ./scripts/prepare-example-site.sh`
+3. Start the dev server:
+   ```bash
+   cd exampleSite && hugo server
+   ```
+4. Open http://localhost:1313/
 
-Official submissions go through [gohugoio/hugoThemesSiteBuilder](https://github.com/gohugoio/hugoThemesSiteBuilder): add your theme’s repo URL to `themes.txt` and open a PR (see that repo’s README for `theme.toml`, screenshots, and `hugo.toml` requirements).
+### Use in your own site
+
+See [Installation](#installation) below.
 
 ## Installation
 
-1. Copy or clone the theme into `themes/ananta-theme-hugo` (for example as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules)), or use a path/module workflow you prefer.
+### Option 1: Git submodule (recommended)
 
-2. In `config.toml`:
+```bash
+git submodule add https://github.com/sharadcodes/ananta-theme-hugo.git themes/ananta-theme-hugo
+```
+
+### Option 2: Clone directly
+
+```bash
+git clone https://github.com/sharadcodes/ananta-theme-hugo.git themes/ananta-theme-hugo
+```
+
+### Option 3: Hugo modules
+
+In your site's `config.toml`:
+
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/sharadcodes/ananta-theme-hugo"
+```
+
+Then run:
+
+```bash
+hugo mod get -u
+```
+
+### Configure your site
+
+1. Set the theme in `config.toml`:
 
 ```toml
 baseURL = "https://example.com/"
@@ -78,6 +119,10 @@ summaryLength = 30
   unsafe = true                 # allow raw HTML in markdown if you need it
 ```
 
+2. Create your content in `content/` (see [Content Structure](#content-structure) below)
+
+## Configuration
+
 ### Google Scholar
 
 Set `googleScholar` to either:
@@ -93,11 +138,11 @@ Leave empty to hide the footer link.
 Override or extend by replacing the theme file, or in your site add  
 `layouts/partials/head-custom.html` — it is rendered at the end of `<head>` in `baseof.html`.
 
-## Content structure
+## Content Structure
 
 ### Homepage (`content/_index.md`)
 
-Markdown body is used as the short “About” preview on the home page (with a link to `/about/`). Front matter is optional.
+Markdown body is used as the short "About" preview on the home page (with a link to `/about/`). Front matter is optional.
 
 ### About (`content/about/_index.md`)
 
@@ -124,11 +169,11 @@ tags: ["tag1", "tag2"]
 Content…
 ```
 
-Fenced code blocks with a language tag (for example `python`, `bash`, `text`) are highlighted by Hugo’s Chroma highlighter. This site uses **line numbers** (`lineNos = true`, `lineNumbersInTable = true`) and class-based colors (`noClasses = false`) with `static/css/chroma-github.css` (regenerate with `hugo gen chromastyles --style=github` if you change `style`). Tweak behavior in `config.toml` under `[markup.highlight]`.
+Fenced code blocks with a language tag (for example `python`, `bash`, `text`) are highlighted by Hugo's Chroma highlighter. This site uses **line numbers** (`lineNos = true`, `lineNumbersInTable = true`) and class-based colors (`noClasses = false`) with `static/css/chroma-github.css` (regenerate with `hugo gen chromastyles --style=github` if you change `style`). Tweak behavior in `config.toml` under `[markup.highlight]`.
 
 Per-fence options (e.g. **line highlights**) need Goldmark block attributes: `[markup.goldmark.parser.attribute]` with `block = true` (see `config.toml`). Example: ` ```python {hl_lines=[2,"4-5"]} `. A full demo lives in `content/posts/blog-authoring-showcase.md`.
 
-**Math (KaTeX):** Goldmark **passthrough** is enabled in `config.toml` for `\(...\)`, `\[...\]`, and `$$...$$`. Set `params.math: true` in a page’s front matter to load KaTeX (or set `math = true` under `[params]` to load on every page). See [Mathematics in Markdown](https://gohugo.io/content-management/mathematics/) in the Hugo docs.
+**Math (KaTeX):** Goldmark **passthrough** is enabled in `config.toml` for `\(...\)`, `\[...\]`, and `$$...$$`. Set `params.math: true` in a page's front matter to load KaTeX (or set `math = true` under `[params]` to load on every page). See [Mathematics in Markdown](https://gohugo.io/content-management/mathematics/) in the Hugo docs.
 
 **Images:** Put files under `static/` (e.g. `static/images/diagram.png`). Reference them with a root path: `![alt text](/images/diagram.png)`.
 
@@ -144,7 +189,7 @@ Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal 
 {{< fig src="/images/a.png" alt="..." caption="..." href="https://example.com/full.png" >}}
 ```
 
-Hugo’s built-in [`figure`](https://gohugo.io/content-management/shortcodes/#figure) still works if you prefer it. [Page bundles](https://gohugo.io/content-management/page-bundles/) are supported for co-located assets.
+Hugo's built-in [`figure`](https://gohugo.io/content-management/shortcodes/#figure) still works if you prefer it. [Page bundles](https://gohugo.io/content-management/page-bundles/) are supported for co-located assets.
 
 ### Papers (`content/papers/`)
 
@@ -240,7 +285,7 @@ Generated sections (default paths):
 - **Font**: `layouts/_default/baseof.html` (Google Fonts link)
 - **Icons**: [Bootstrap Icons](https://icons.getbootstrap.com/) — theme uses names like `bi-house`, `bi-mortarboard` (Scholar), etc.
 
-## Theme layout reference
+## Theme Layout Reference
 
 | Area | Location |
 |------|----------|
@@ -252,12 +297,44 @@ Generated sections (default paths):
 | Tags | `layouts/taxonomy/list.html`, `terms.html` |
 | Header / footer / breadcrumb | `layouts/partials/*.html` |
 
+## Browser Support
+
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile-first responsive design
+- No JavaScript dependencies
+
+## Performance
+
+- Static HTML output (no runtime overhead)
+- Minimal CSS (~8 KB minified)
+- Optimized for fast page loads
+- Lazy-loaded images
+
+## Contributing
+
+Found a bug or have a feature request? Open an [issue](https://github.com/sharadcodes/ananta-theme-hugo/issues) or submit a [pull request](https://github.com/sharadcodes/ananta-theme-hugo/pulls).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and updates.
+
 ## License
 
-MIT — use freely.
+MIT — use freely. See [LICENSE](LICENSE) for details.
 
 ## Credits
 
-- [Alegreya](https://fonts.google.com/specimen/Alegreya)
-- [Bootstrap Icons](https://icons.getbootstrap.com/)
-- [Hugo](https://gohugo.io/)
+- [Alegreya](https://fonts.google.com/specimen/Alegreya) — elegant serif font
+- [Bootstrap Icons](https://icons.getbootstrap.com/) — comprehensive icon library
+- [Hugo](https://gohugo.io/) — static site generator
+
+## Author
+
+**Sharad Raj**
+- Website: [sharadraj.com](https://sharadraj.com)
+- GitHub: [@sharadcodes](https://github.com/sharadcodes)
+- LinkedIn: [sharadraj](https://linkedin.com/in/sharadraj)
+
+---
+
+Made with ❤️ for academics and engineers.
