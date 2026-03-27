@@ -16,7 +16,7 @@
       {{ if .Params.tags }}
       <div class="tech-stack" style="margin-top: 0.5rem;">
         {{ range .Params.tags }}
-        <a href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
+        <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
           <i class="bi bi-tag"></i>
           {{ . }}
         </a>
