@@ -59,6 +59,16 @@
         <span class="meta-item"><i class="bi bi-calendar" aria-hidden="true"></i><span>{{ .Date.Format "Jan 2, 2006" }}</span></span>
       </div>
       {{ end }}
+      {{ if .Params.tags }}
+      <div class="tech-stack" style="margin-top: 0.5rem;">
+        {{ range .Params.tags }}
+        <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" class="tag" style="text-decoration: none;">
+          <i class="bi bi-tag"></i>
+          {{ . }}
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
     </li>
     {{ end }}
   </ul>

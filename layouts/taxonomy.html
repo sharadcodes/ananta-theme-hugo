@@ -2,7 +2,7 @@
 {{ partial "breadcrumb.html" . }}
 
 <section>
-  <h2><i class="bi bi-tags"></i> All Tags</h2>
+  <h2><i class="bi bi-tags"></i> {{ .Title }}</h2>
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
     {{ range .Data.Terms.Alphabetical }}
     <div style="flex: 0 1 calc(50% - 0.5rem);">
