@@ -1,12 +1,14 @@
 name = "Ananta Theme Hugo"
 license = "MIT"
 licenselink = "https://opensource.org/licenses/MIT"
-description = "A minimal, research-oriented Hugo theme with Bootstrap Icons"
+description = "A minimal, research-oriented Hugo theme"
 homepage = "https://github.com/sharadcodes/ananta-theme-hugo"
 demosite = "https://sharadcodes.github.io/ananta-theme-hugo/"
 tags = ["research", "academic", "minimal", "blog", "portfolio", "tags"]
 features = ["responsive", "icons", "taxonomies", "breadcrumbs"]
 min_version = "0.146.0"
+# Theme semver for releases; bump when cutting a new tag (see .github/workflows/create-release.yml).
+version = "1.0.0"
 
 [author]
 name = "Sharad Raj Singh Maurya"

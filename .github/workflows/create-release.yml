@@ -1,0 +1,91 @@
+# Create a git tag and GitHub Release when theme.toml version changes, or manually via workflow_dispatch.
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'theme.toml'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version tag (e.g. v1.0.0 or 1.0.0)'
+        required: true
+        default: 'v1.0.0'
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      body:
+        description: 'Release notes (optional — leave blank for auto-generated)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version
+        id: version
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            RAW="${{ github.event.inputs.version }}"
+            echo "prerelease=${{ github.event.inputs.prerelease }}" >> "$GITHUB_OUTPUT"
+          else
+            LINE="$(grep -E '^[[:space:]]*version[[:space:]]*=' theme.toml | head -1)"
+            if [ -z "$LINE" ]; then
+              echo "::error::theme.toml has no version = line"
+              exit 1
+            fi
+            RAW="$(echo "$LINE" | sed -E "s/^[[:space:]]*version[[:space:]]*=[[:space:]]*[\"']//;s/[\"'][[:space:]]*$//")"
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+          # Normalize to tag with leading v
+          if [[ "$RAW" == v* ]]; then
+            TAG="$RAW"
+          else
+            TAG="v${RAW}"
+          fi
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: Check tag does not already exist
+        id: check_tag
+        run: |
+          if git ls-remote --tags origin | grep -qE "refs/tags/${{ steps.version.outputs.tag }}$"; then
+            echo "Tag ${{ steps.version.outputs.tag }} already exists — skipping release."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create tag
+        if: steps.check_tag.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${{ steps.version.outputs.tag }}"
+          git push origin "${{ steps.version.outputs.tag }}"
+
+      - name: Create GitHub release
+        if: steps.check_tag.outputs.skip == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.tag }}
+          body: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.body || '' }}
+          generate_release_notes: ${{ github.event_name == 'push' || github.event.inputs.body == '' }}
+          prerelease: ${{ steps.version.outputs.prerelease == 'true' }}
