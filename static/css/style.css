@@ -748,6 +748,11 @@ article h3 {
   line-height: 1.35;
 }
 
+/* Single post: add space between meta row and body */
+article.post-single .meta {
+  margin-bottom: 1rem;
+}
+
 .content-list .meta-group,
 .content-list > li > .meta {
   margin-top: 0.45rem;
