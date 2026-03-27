@@ -171,6 +171,7 @@ Content…
 #### Code highlighting
 
 Fenced code blocks with a language tag (e.g., `python`, `bash`, `text`) are highlighted by Hugo's Chroma highlighter. This theme uses:
+
 - **Line numbers** enabled (`lineNos = true`, `lineNumbersInTable = true`)
 - **Class-based colors** (`noClasses = false`) with `static/css/chroma-github.css`
 - Regenerate styles: `hugo gen chromastyles --style=github > static/css/chroma-github.css`
@@ -187,7 +188,7 @@ Per-fence options (e.g., line highlights) require Goldmark block attributes. Ena
 
 Example with highlighted lines:
 
-````markdown
+```markdown
 ```python {hl_lines=[2,"4-5"]}
 def hello():
     print("line 2 highlighted")
@@ -195,13 +196,14 @@ def hello():
     print("line 4 highlighted")
     print("line 5 highlighted")
 ```
-````
+```
 
 See `content/posts/blog-authoring-showcase.md` for a full demo.
 
 #### Math (KaTeX)
 
 Goldmark **passthrough** is enabled in `config.toml` for:
+
 - Inline: `\(...\)`
 - Display: `\[...\]` or `$$...$$`
 
@@ -239,9 +241,9 @@ Use the `fig` shortcode for captioned figures with lazy-loading and optional lin
 {{< fig src="/images/a.png" alt="..." caption="..." href="https://example.com/full.png" >}}
 ```
 
-Hugo's built-in [`figure` shortcode](https://gohugo.io/content-management/shortcodes/#figure) also works if you prefer it.
+Hugo's built-in `[figure` shortcode](https://gohugo.io/content-management/shortcodes/#figure) also works if you prefer it.
 
-**Note:** Hugo processes shortcodes before Markdown, so `{{< … >}}` inside fenced code blocks is still executed. To show shortcode source, use raw HTML `<pre><code>` with `&lt;` instead of `<`, or reference samples from a file.
+**Note:** Hugo processes shortcodes before Markdown, so `{{< … >}}` inside fenced code blocks is still executed. To show shortcode source, use raw HTML `<pre><code>` with `<` instead of `<`, or reference samples from a file.
 
 ### Papers (`content/papers/`)
 
@@ -310,12 +312,12 @@ Content…
 
 #### Timeline and status
 
-- **`startDate`** and **`endDate`**: ISO dates (e.g., `2024-06-15`) — drives timeline visualization
-- **`status`**: Optional override. Auto-inferred if omitted:
+- `**startDate**` and `**endDate**`: ISO dates (e.g., `2024-06-15`) — drives timeline visualization
+- `**status**`: Optional override. Auto-inferred if omitted:
   - **Planned**: start date in the future
   - **Active**: no end date, or end date today or later
   - **Completed**: end date in the past
-- **`year`**: Legacy string field (still shown if start/end dates not set)
+- `**year`**: Legacy string field (still shown if start/end dates not set)
 
 ### Experience (`content/experience/`)
 
@@ -333,11 +335,11 @@ Description…
 
 #### Front matter fields
 
-- **`title`**: Job title or role name
-- **`company`**: Organization name
-- **`period`**: Display string (e.g., "2024 – Present")
-- **`date`**: ISO date for sorting (earliest first)
-- **`weight`**: Sort order (lower numbers appear first)
+- `**title**`: Job title or role name
+- `**company**`: Organization name
+- `**period**`: Display string (e.g., "2024 – Present")
+- `**date**`: ISO date for sorting (earliest first)
+- `**weight**`: Sort order (lower numbers appear first)
 
 ## Navigation and URLs
 
@@ -350,20 +352,24 @@ Description…
 
 Default paths for content types:
 
-| Path | Content |
-|------|---------|
-| `/posts/` | Post list |
-| `/papers/` | Paper list |
-| `/projects/` | Project list |
-| `/experience/` | Experience list |
-| `/about/` | About page |
-| `/tags/` | All tags |
+
+| Path            | Content             |
+| --------------- | ------------------- |
+| `/posts/`       | Post list           |
+| `/papers/`      | Paper list          |
+| `/projects/`    | Project list        |
+| `/experience/`  | Experience list     |
+| `/about/`       | About page          |
+| `/tags/`        | All tags            |
 | `/tags/<name>/` | Items with that tag |
+
+
 ## Customization
 
 ### Styling
 
 **Colors, spacing, mobile rules:**
+
 - File: `static/css/style.css`
 - Edit CSS variables at the top of the file
 - Rebuild with `hugo` to see changes
@@ -371,6 +377,7 @@ Default paths for content types:
 ### Typography
 
 **Font selection:**
+
 - File: `layouts/_default/baseof.html`
 - Change Google Fonts import link
 - Adjust font-family in `static/css/style.css`
@@ -380,6 +387,7 @@ Default paths for content types:
 **Icon library:** [Bootstrap Icons](https://icons.getbootstrap.com/)
 
 Theme uses icon names like:
+
 - `bi-house` — home
 - `bi-mortarboard` — education/scholar
 - `bi-github` — GitHub
@@ -392,25 +400,28 @@ Browse all available icons at [icons.getbootstrap.com](https://icons.getbootstra
 
 ### Template files
 
-| Area | Location |
-|------|----------|
-| Shell (base HTML) | `layouts/_default/baseof.html` |
-| Home page | `layouts/_default/home.html` + `layouts/partials/home-section-*.html` |
-| List pages | `layouts/_default/list.html` |
-| Single pages | `layouts/_default/single.html` |
-| Posts | `layouts/posts/single.html` |
-| Papers | `layouts/papers/single.html` |
-| Projects | `layouts/projects/single.html` |
-| About | `layouts/about/list.html` |
-| Experience | `layouts/experience/list.html` |
-| Tags | `layouts/taxonomy/list.html`, `terms.html` |
-| Header | `layouts/partials/header.html` |
-| Footer | `layouts/partials/footer.html` |
-| Breadcrumb | `layouts/partials/breadcrumb.html` |
+
+| Area              | Location                                                              |
+| ----------------- | --------------------------------------------------------------------- |
+| Shell (base HTML) | `layouts/_default/baseof.html`                                        |
+| Home page         | `layouts/_default/home.html` + `layouts/partials/home-section-*.html` |
+| List pages        | `layouts/_default/list.html`                                          |
+| Single pages      | `layouts/_default/single.html`                                        |
+| Posts             | `layouts/posts/single.html`                                           |
+| Papers            | `layouts/papers/single.html`                                          |
+| Projects          | `layouts/projects/single.html`                                        |
+| About             | `layouts/about/list.html`                                             |
+| Experience        | `layouts/experience/list.html`                                        |
+| Tags              | `layouts/taxonomy/list.html`, `terms.html`                            |
+| Header            | `layouts/partials/header.html`                                        |
+| Footer            | `layouts/partials/footer.html`                                        |
+| Breadcrumb        | `layouts/partials/breadcrumb.html`                                    |
+
 
 ### Partial templates
 
 Home page sections:
+
 - `layouts/partials/home-section-about.html`
 - `layouts/partials/home-section-experience.html`
 - `layouts/partials/home-section-posts.html`
@@ -418,8 +429,10 @@ Home page sections:
 - `layouts/partials/home-section-projects.html`
 
 Utilities:
+
 - `layouts/partials/math.html` — KaTeX loader
 - `layouts/partials/head-custom.html` — Custom head content (override in your site)
+
 ## Browser Support
 
 - ✓ Modern browsers (Chrome, Firefox, Safari, Edge)
@@ -450,20 +463,13 @@ See [CHANGELOG.md](CHANGELOG.md) for version history, updates, and breaking chan
 
 MIT — use freely. See [LICENSE](LICENSE) for full details.
 
-## Credits
-
-- [Alegreya](https://fonts.google.com/specimen/Alegreya) — elegant serif font by Juan Pablo del Peral
-- [Bootstrap Icons](https://icons.getbootstrap.com/) — comprehensive icon library by Bootstrap
-- [Hugo](https://gohugo.io/) — static site generator by the Hugo community
-
 ## Author
 
 **Sharad Raj**
 
-- Website: [sharadraj.com](https://sharadraj.com)
+- Website: [sharadraj.in](https://sharadraj.com)
 - GitHub: [@sharadcodes](https://github.com/sharadcodes)
 - LinkedIn: [srsmaurya](https://www.linkedin.com/in/srsmaurya)
-- Email: [hello@sharadraj.com](mailto:hello@sharadraj.com)
 
 ---
 
