@@ -169,17 +169,68 @@ tags: ["tag1", "tag2"]
 Content…
 ```
 
-Fenced code blocks with a language tag (for example `python`, `bash`, `text`) are highlighted by Hugo's Chroma highlighter. This site uses **line numbers** (`lineNos = true`, `lineNumbersInTable = true`) and class-based colors (`noClasses = false`) with `static/css/chroma-github.css` (regenerate with `hugo gen chromastyles --style=github` if you change `style`). Tweak behavior in `config.toml` under `[markup.highlight]`.
+#### Code highlighting
 
-Per-fence options (e.g. **line highlights**) need Goldmark block attributes: `[markup.goldmark.parser.attribute]` with `block = true` (see `config.toml`). Example: ````python {hl_lines=[2,"4-5"]}`. A full demo lives in `content/posts/blog-authoring-showcase.md`.
+Fenced code blocks with a language tag (e.g., `python`, `bash`, `text`) are highlighted by Hugo's Chroma highlighter. This theme uses:
+- **Line numbers** enabled (`lineNos = true`, `lineNumbersInTable = true`)
+- **Class-based colors** (`noClasses = false`) with `static/css/chroma-github.css`
+- Regenerate styles: `hugo gen chromastyles --style=github > static/css/chroma-github.css`
+- Configure in `config.toml` under `[markup.highlight]`
 
-**Math (KaTeX):** Goldmark **passthrough** is enabled in `config.toml` for `\(...\)`, `\[...\]`, and `$$...$$`. Set `params.math: true` in a page's front matter to load KaTeX (or set `math = true` under `[params]` to load on every page). See [Mathematics in Markdown](https://gohugo.io/content-management/mathematics/) in the Hugo docs.
+#### Line highlights
 
-**Images:** Put files under `static/` (e.g. `static/images/diagram.png`). Reference them with a root path: `![alt text](/images/diagram.png)`.
+Per-fence options (e.g., line highlights) require Goldmark block attributes. Enable in `config.toml`:
 
-`**fig` shortcode** (theme): captioned figures with lazy-loading and optional link.
+```toml
+[markup.goldmark.parser.attribute]
+  block = true
+```
 
-Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal fenced code block is still **executed**. To show shortcode source in a post, use raw HTML `<pre><code>` and write the opening `<` instead of `<`, or put samples in a file and `readFile` them from a tiny shortcode (see `blog-authoring-showcase.md`).
+Example with highlighted lines:
+
+````markdown
+```python {hl_lines=[2,"4-5"]}
+def hello():
+    print("line 2 highlighted")
+    print("line 3")
+    print("line 4 highlighted")
+    print("line 5 highlighted")
+```
+````
+
+See `content/posts/blog-authoring-showcase.md` for a full demo.
+
+#### Math (KaTeX)
+
+Goldmark **passthrough** is enabled in `config.toml` for:
+- Inline: `\(...\)`
+- Display: `\[...\]` or `$$...$$`
+
+To load KaTeX on a page, set in front matter:
+
+```yaml
+params:
+  math: true
+```
+
+Or enable globally in `config.toml`:
+
+```toml
+[params]
+  math = true
+```
+
+See [Mathematics in Markdown](https://gohugo.io/content-management/mathematics/) in Hugo docs.
+
+#### Images
+
+1. Place image files in `static/` (e.g., `static/images/diagram.png`)
+2. Reference with root path: `![alt text](/images/diagram.png)`
+3. Supports [page bundles](https://gohugo.io/content-management/page-bundles/) for co-located assets
+
+#### Figures with captions
+
+Use the `fig` shortcode for captioned figures with lazy-loading and optional links:
 
 ```markdown
 {{< fig src="/images/diagram.png" alt="Description" caption="Caption supports **markdown**." >}}
@@ -189,11 +240,11 @@ Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal 
 {{< fig src="/images/a.png" alt="..." caption="..." href="https://example.com/full.png" >}}
 ```
 
-Hugo's built-in `[figure](https://gohugo.io/content-management/shortcodes/#figure)` still works if you prefer it. [Page bundles](https://gohugo.io/content-management/page-bundles/) are supported for co-located assets.
+Hugo's built-in [`figure` shortcode](https://gohugo.io/content-management/shortcodes/#figure) also works if you prefer it.
+
+**Note:** Hugo processes shortcodes before Markdown, so `{{< … >}}` inside fenced code blocks is still executed. To show shortcode source, use raw HTML `<pre><code>` with `&lt;` instead of `<`, or reference samples from a file.
 
 ### Papers (`content/papers/`)
-
-**External links** (home, list, tag pages, paper page): With `**doi`**, a **DOI** link is shown (use `10.xxx/...` or a full `https://doi.org/...` string). Without a DOI, set `**paperUrl`** and optional `**paperUrlLabel**`, or `**paperLinks**` as a list of `{ name, url }`.
 
 ```markdown
 ---
@@ -210,14 +261,26 @@ references:
 Content…
 ```
 
-No DOI — one link:
+#### External links
+
+The theme displays external links on paper pages, lists, and tag pages. Choose one:
+
+**With DOI:**
+
+```yaml
+doi: "10.1234/example"
+# or full URL:
+doi: "https://doi.org/10.1234/example"
+```
+
+**Without DOI — single link:**
 
 ```yaml
 paperUrl: "https://arxiv.org/abs/1234.5678"
 paperUrlLabel: "arXiv"
 ```
 
-No DOI — several links:
+**Without DOI — multiple links:**
 
 ```yaml
 paperLinks:
@@ -228,8 +291,6 @@ paperLinks:
 ```
 
 ### Projects (`content/projects/`)
-
-Optional `**startDate**` and `**endDate**` (ISO dates, e.g. `2024-06-15`) drive the timeline line on the project page, list, and home preview. If `**status**` is omitted, it is inferred: **Planned** (start in the future), **Active** (no end date, or end date today or later), **Completed** (end date in the past). Set `**status`** explicitly to override. Legacy `**year**` (string) is still shown when start/end are not set.
 
 ```markdown
 ---
@@ -247,6 +308,15 @@ docs: "https://…"
 
 Content…
 ```
+
+#### Timeline and status
+
+- **`startDate`** and **`endDate`**: ISO dates (e.g., `2024-06-15`) — drives timeline visualization
+- **`status`**: Optional override. Auto-inferred if omitted:
+  - **Planned**: start date in the future
+  - **Active**: no end date, or end date today or later
+  - **Completed**: end date in the past
+- **`year`**: Legacy string field (still shown if start/end dates not set)
 
 ### Experience (`content/experience/`)
 
