@@ -333,7 +333,7 @@ MIT — use freely. See [LICENSE](LICENSE) for details.
 **Sharad Raj**
 - Website: [sharadraj.com](https://sharadraj.com)
 - GitHub: [@sharadcodes](https://github.com/sharadcodes)
-- LinkedIn: [sharadraj](https://linkedin.com/in/sharadraj)
+- LinkedIn: [srsmaurya](https://www.linkedin.com/in/srsmaurya)
 
 ---
 
