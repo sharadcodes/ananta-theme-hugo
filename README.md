@@ -1,9 +1,8 @@
 # Ananta Theme Hugo
 
-[License: MIT](https://opensource.org/licenses/MIT)
-[Hugo](https://gohugo.io)
-
 Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/specimen/Alegreya) and [Bootstrap Icons](https://icons.getbootstrap.com/). Suited to academics and engineers who want a small, readable portfolio.
+
+[License: MIT](https://opensource.org/licenses/MIT) | [Hugo](https://gohugo.io)
 
 ## About the name *Ananta* (Hindi / Sanskrit)
 
