@@ -4,7 +4,7 @@ Example site using the **Ananta Theme Hugo** theme (`themes/ananta-theme-hugo/`)
 
 ## Quick start
 
-1. Install [Hugo](https://gohugo.io/) (extended not required; v0.87.0+).
+1. Install [Hugo](https://gohugo.io/) (v0.145.0+).
 2. From this directory:
 
 ```powershell
