@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -e
 
 # Vercel build script for exampleSite
 # This script runs from exampleSite/ directory
 
-# Create themes directory
-mkdir -p themes
+echo "Setting up theme..."
+THEME_DIR="themes/ananta-theme-hugo"
+mkdir -p "$THEME_DIR"
 
-# Link theme from parent directory
-ln -sfn .. themes/ananta-theme-hugo
+echo "Copying theme files from parent directory..."
 
-# Build with Hugo
+# Copy layouts directory (preserves all subdirectories)
+echo "  Copying layouts..."
+cp -r ../layouts "$THEME_DIR/"
+
+# Copy static directory
+echo "  Copying static..."
+cp -r ../static "$THEME_DIR/"
+
+# Copy theme.toml
+echo "  Copying theme.toml..."
+cp ../theme.toml "$THEME_DIR/"
+
+echo "Building site with Hugo..."
 hugo --gc --minify
 
 echo "Build completed successfully!"
