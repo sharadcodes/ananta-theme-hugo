@@ -27,7 +27,7 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 
 This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo.toml` live at the repo root. A full demo site lives under `[exampleSite/](exampleSite/)`.
 
-**Prerequisites:** [Hugo 0.145.0+](https://gohugo.io/installation/) (extended)
+**Prerequisites:** [Hugo 0.146.0+](https://gohugo.io/installation/) (extended) — the theme uses the [v0.146+ layout lookup](https://gohugo.io/templates/new-templatesystem-overview/) (`layouts/term.html`, `layouts/_partials/`, etc.).
 
 **Setup:**
 
@@ -135,7 +135,7 @@ Leave empty to hide the footer link.
 ### Extra `<head>` content
 
 Override or extend by replacing the theme file, or in your site add  
-`layouts/partials/head-custom.html` — it is rendered at the end of `<head>` in `baseof.html`.
+`layouts/_partials/head-custom.html` — it is rendered at the end of `<head>` in `baseof.html`.
 
 ## Content Structure
 
@@ -196,6 +196,7 @@ def hello():
     print("line 4 highlighted")
     print("line 5 highlighted")
 ```
+
 ```
 
 See `content/posts/blog-authoring-showcase.md` for a full demo.
@@ -241,7 +242,7 @@ Use the `fig` shortcode for captioned figures with lazy-loading and optional lin
 {{< fig src="/images/a.png" alt="..." caption="..." href="https://example.com/full.png" >}}
 ```
 
-Hugo's built-in `[figure` shortcode](https://gohugo.io/content-management/shortcodes/#figure) also works if you prefer it.
+Hugo's built-in `[figure` shortcode]([https://gohugo.io/content-management/shortcodes/#figure](https://gohugo.io/content-management/shortcodes/#figure)) also works if you prefer it.
 
 **Note:** Hugo processes shortcodes before Markdown, so `{{< … >}}` inside fenced code blocks is still executed. To show shortcode source, use raw HTML `<pre><code>` with `<` instead of `<`, or reference samples from a file.
 
@@ -378,7 +379,7 @@ Default paths for content types:
 
 **Font selection:**
 
-- File: `layouts/_default/baseof.html`
+- File: `layouts/baseof.html`
 - Change Google Fonts import link
 - Adjust font-family in `static/css/style.css`
 
@@ -401,37 +402,40 @@ Browse all available icons at [icons.getbootstrap.com](https://icons.getbootstra
 ### Template files
 
 
-| Area              | Location                                                              |
-| ----------------- | --------------------------------------------------------------------- |
-| Shell (base HTML) | `layouts/_default/baseof.html`                                        |
-| Home page         | `layouts/_default/home.html` + `layouts/partials/home-section-*.html` |
-| List pages        | `layouts/_default/list.html`                                          |
-| Single pages      | `layouts/_default/single.html`                                        |
-| Posts             | `layouts/posts/single.html`                                           |
-| Papers            | `layouts/papers/single.html`                                          |
-| Projects          | `layouts/projects/single.html`                                        |
-| About             | `layouts/about/list.html`                                             |
-| Experience        | `layouts/experience/list.html`                                        |
-| Tags              | `layouts/taxonomy/list.html`, `terms.html`                            |
-| Header            | `layouts/partials/header.html`                                        |
-| Footer            | `layouts/partials/footer.html`                                        |
-| Breadcrumb        | `layouts/partials/breadcrumb.html`                                    |
+| Area                         | Location                                                      |
+| ---------------------------- | ------------------------------------------------------------- |
+| Shell (base HTML)            | `layouts/baseof.html`                                         |
+| Home page                    | `layouts/home.html` + `layouts/_partials/home-section-*.html` |
+| List pages                   | `layouts/list.html`                                           |
+| Single pages                 | `layouts/single.html`                                         |
+| Posts                        | `layouts/posts/single.html`                                   |
+| Papers                       | `layouts/papers/single.html`                                  |
+| Projects                     | `layouts/projects/single.html`                                |
+| About                        | `layouts/about/list.html`                                     |
+| Experience                   | `layouts/experience/list.html`                                |
+| Taxonomy (e.g. all tags)     | `layouts/taxonomy.html`                                       |
+| Taxonomy term (e.g. one tag) | `layouts/term.html`                                           |
+| `fig` shortcode              | `layouts/_shortcodes/fig.html`                                |
+| Markdown images              | `layouts/_markup/render-image.html`                           |
+| Header                       | `layouts/_partials/header.html`                               |
+| Footer                       | `layouts/_partials/footer.html`                               |
+| Breadcrumb                   | `layouts/_partials/breadcrumb.html`                           |
 
 
 ### Partial templates
 
 Home page sections:
 
-- `layouts/partials/home-section-about.html`
-- `layouts/partials/home-section-experience.html`
-- `layouts/partials/home-section-posts.html`
-- `layouts/partials/home-section-papers.html`
-- `layouts/partials/home-section-projects.html`
+- `layouts/_partials/home-section-about.html`
+- `layouts/_partials/home-section-experience.html`
+- `layouts/_partials/home-section-posts.html`
+- `layouts/_partials/home-section-papers.html`
+- `layouts/_partials/home-section-projects.html`
 
 Utilities:
 
-- `layouts/partials/math.html` — KaTeX loader
-- `layouts/partials/head-custom.html` — Custom head content (override in your site)
+- `layouts/_partials/math.html` — KaTeX loader
+- `layouts/_partials/head-custom.html` — Custom head content (override in your site)
 
 ## Browser Support
 
