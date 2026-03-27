@@ -1,6 +1,6 @@
 baseURL = "https://sharadcodes.github.io/ananta-theme-hugo/"
 languageCode = "en-us"
-title = "Sharad Raj"
+title = "Ananta Theme Demo | Sharad Raj"
 theme = "ananta-theme-hugo"
 summaryLength = 30
 
