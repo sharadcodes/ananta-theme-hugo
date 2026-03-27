@@ -56,8 +56,8 @@ summaryLength = 30
   block = [['\[', '\]'], ['$$', '$$']]
   inline = [['\(', '\)']]
 
-# Syntax highlighting (Chroma). Line numbers on; colors from themes/ananta-theme-hugo/static/css/chroma-github.css
-# Regenerate after changing style: hugo gen chromastyles --style=github > themes/ananta-theme-hugo/static/css/chroma-github.css
+# Syntax highlighting (Chroma). Line numbers on; colors from theme static/css/chroma-github.css
+# Regenerate: hugo gen chromastyles --style=github > ../static/css/chroma-github.css
 [markup.highlight]
   codeFences = true
   guessSyntax = true

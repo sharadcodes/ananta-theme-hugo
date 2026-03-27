@@ -1,0 +1,6 @@
+# Theme compatibility for Hugo Modules / themes.gohugo.io builder.
+# https://gohugo.io/hugo-modules/configuration/#module-config-hugoversion
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.145.0"
