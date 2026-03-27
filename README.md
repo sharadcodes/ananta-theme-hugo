@@ -1,13 +1,13 @@
 # Ananta Theme Hugo
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Hugo](https://img.shields.io/badge/Hugo-0.145.0+-blue.svg)](https://gohugo.io)
+[License: MIT](https://opensource.org/licenses/MIT)
+[Hugo](https://gohugo.io)
 
 Minimal, research-oriented Hugo theme with [Alegreya](https://fonts.google.com/specimen/Alegreya) and [Bootstrap Icons](https://icons.getbootstrap.com/). Suited to academics and engineers who want a small, readable portfolio.
 
 ## About the name *Ananta* (Hindi / Sanskrit)
 
-In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* ("end" / "limit"), so it literally means **"without end."** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. In Hindi you may see it explained as **जो कभी समाप्त न हो** — *jo kabhi samāpt na ho* ("that which never finishes"). The same idea appears in related Indian languages with similar spelling and sense. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed "stopping point."
+In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* ("end" / "limit"), so it literally means **"without end."** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed "stopping point."
 
 ## Features
 
@@ -26,7 +26,7 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 
 ### Try the demo locally
 
-This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo.toml` live at the repo root. A full demo site lives under [`exampleSite/`](exampleSite/).
+This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo.toml` live at the repo root. A full demo site lives under `[exampleSite/](exampleSite/)`.
 
 **Prerequisites:** [Hugo 0.145.0+](https://gohugo.io/installation/) (extended)
 
@@ -34,13 +34,13 @@ This repository **is** the theme: `layouts/`, `static/`, `theme.toml`, and `hugo
 
 1. Clone or download this repository
 2. Link the theme to the example site:
-   - **Windows (PowerShell):** `./scripts/prepare-example-site.ps1`
-   - **macOS / Linux:** `bash ./scripts/prepare-example-site.sh`
+  - **Windows (PowerShell):** `./scripts/prepare-example-site.ps1`
+  - **macOS / Linux:** `bash ./scripts/prepare-example-site.sh`
 3. Start the dev server:
-   ```bash
+  ```bash
    cd exampleSite && hugo server
-   ```
-4. Open http://localhost:1313/
+  ```
+4. Open [http://localhost:1313/](http://localhost:1313/)
 
 ### Use in your own site
 
@@ -119,7 +119,7 @@ summaryLength = 30
   unsafe = true                 # allow raw HTML in markdown if you need it
 ```
 
-2. Create your content in `content/` (see [Content Structure](#content-structure) below)
+1. Create your content in `content/` (see [Content Structure](#content-structure) below)
 
 ## Configuration
 
@@ -127,8 +127,8 @@ summaryLength = 30
 
 Set `googleScholar` to either:
 
-- The **`user=`** value from your profile URL  
-  `https://scholar.google.com/citations?user=**AbCdEfGh**` → use `AbCdEfGh`, or  
+- The `**user=**` value from your profile URL  
+`https://scholar.google.com/citations?user=**AbCdEfGh**` → use `AbCdEfGh`, or  
 - The **full profile URL** if it starts with `http://` or `https://` (any regional domain).
 
 Leave empty to hide the footer link.
@@ -171,15 +171,15 @@ Content…
 
 Fenced code blocks with a language tag (for example `python`, `bash`, `text`) are highlighted by Hugo's Chroma highlighter. This site uses **line numbers** (`lineNos = true`, `lineNumbersInTable = true`) and class-based colors (`noClasses = false`) with `static/css/chroma-github.css` (regenerate with `hugo gen chromastyles --style=github` if you change `style`). Tweak behavior in `config.toml` under `[markup.highlight]`.
 
-Per-fence options (e.g. **line highlights**) need Goldmark block attributes: `[markup.goldmark.parser.attribute]` with `block = true` (see `config.toml`). Example: ` ```python {hl_lines=[2,"4-5"]} `. A full demo lives in `content/posts/blog-authoring-showcase.md`.
+Per-fence options (e.g. **line highlights**) need Goldmark block attributes: `[markup.goldmark.parser.attribute]` with `block = true` (see `config.toml`). Example: ````python {hl_lines=[2,"4-5"]}`. A full demo lives in `content/posts/blog-authoring-showcase.md`.
 
 **Math (KaTeX):** Goldmark **passthrough** is enabled in `config.toml` for `\(...\)`, `\[...\]`, and `$$...$$`. Set `params.math: true` in a page's front matter to load KaTeX (or set `math = true` under `[params]` to load on every page). See [Mathematics in Markdown](https://gohugo.io/content-management/mathematics/) in the Hugo docs.
 
 **Images:** Put files under `static/` (e.g. `static/images/diagram.png`). Reference them with a root path: `![alt text](/images/diagram.png)`.
 
-**`fig` shortcode** (theme): captioned figures with lazy-loading and optional link.
+`**fig` shortcode** (theme): captioned figures with lazy-loading and optional link.
 
-Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal fenced code block is still **executed**. To show shortcode source in a post, use raw HTML `<pre><code>` and write the opening `&lt;` instead of `<`, or put samples in a file and `readFile` them from a tiny shortcode (see `blog-authoring-showcase.md`).
+Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal fenced code block is still **executed**. To show shortcode source in a post, use raw HTML `<pre><code>` and write the opening `<` instead of `<`, or put samples in a file and `readFile` them from a tiny shortcode (see `blog-authoring-showcase.md`).
 
 ```markdown
 {{< fig src="/images/diagram.png" alt="Description" caption="Caption supports **markdown**." >}}
@@ -189,11 +189,11 @@ Hugo processes **shortcodes before Markdown**, so `{{< … >}}` inside a normal 
 {{< fig src="/images/a.png" alt="..." caption="..." href="https://example.com/full.png" >}}
 ```
 
-Hugo's built-in [`figure`](https://gohugo.io/content-management/shortcodes/#figure) still works if you prefer it. [Page bundles](https://gohugo.io/content-management/page-bundles/) are supported for co-located assets.
+Hugo's built-in `[figure](https://gohugo.io/content-management/shortcodes/#figure)` still works if you prefer it. [Page bundles](https://gohugo.io/content-management/page-bundles/) are supported for co-located assets.
 
 ### Papers (`content/papers/`)
 
-**External links** (home, list, tag pages, paper page): With **`doi`**, a **DOI** link is shown (use `10.xxx/...` or a full `https://doi.org/...` string). Without a DOI, set **`paperUrl`** and optional **`paperUrlLabel`**, or **`paperLinks`** as a list of `{ name, url }`.
+**External links** (home, list, tag pages, paper page): With `**doi`**, a **DOI** link is shown (use `10.xxx/...` or a full `https://doi.org/...` string). Without a DOI, set `**paperUrl`** and optional `**paperUrlLabel**`, or `**paperLinks**` as a list of `{ name, url }`.
 
 ```markdown
 ---
@@ -229,7 +229,7 @@ paperLinks:
 
 ### Projects (`content/projects/`)
 
-Optional **`startDate`** and **`endDate`** (ISO dates, e.g. `2024-06-15`) drive the timeline line on the project page, list, and home preview. If **`status`** is omitted, it is inferred: **Planned** (start in the future), **Active** (no end date, or end date today or later), **Completed** (end date in the past). Set **`status`** explicitly to override. Legacy **`year`** (string) is still shown when start/end are not set.
+Optional `**startDate**` and `**endDate**` (ISO dates, e.g. `2024-06-15`) drive the timeline line on the project page, list, and home preview. If `**status**` is omitted, it is inferred: **Planned** (start in the future), **Active** (no end date, or end date today or later), **Completed** (end date in the past). Set `**status`** explicitly to override. Legacy `**year**` (string) is still shown when start/end are not set.
 
 ```markdown
 ---
@@ -269,15 +269,17 @@ Description…
 
 Generated sections (default paths):
 
-| Path | Content |
-|------|---------|
-| `/posts/` | Post list |
-| `/papers/` | Paper list |
-| `/projects/` | Project list |
-| `/experience/` | Experience list |
-| `/about/` | About page |
-| `/tags/` | All tags |
+
+| Path            | Content             |
+| --------------- | ------------------- |
+| `/posts/`       | Post list           |
+| `/papers/`      | Paper list          |
+| `/projects/`    | Project list        |
+| `/experience/`  | Experience list     |
+| `/about/`       | About page          |
+| `/tags/`        | All tags            |
 | `/tags/<name>/` | Items with that tag |
+
 
 ## Customization
 
@@ -287,15 +289,17 @@ Generated sections (default paths):
 
 ## Theme Layout Reference
 
-| Area | Location |
-|------|----------|
-| Shell | `layouts/_default/baseof.html` |
-| Home | `layouts/_default/home.html` + `layouts/partials/home-section-*.html` |
-| Lists / singles | `layouts/_default/list.html`, `single.html`, kind-specific under `posts/`, `papers/`, `projects/` |
-| About | `layouts/about/list.html` |
-| Experience | `layouts/experience/list.html` |
-| Tags | `layouts/taxonomy/list.html`, `terms.html` |
-| Header / footer / breadcrumb | `layouts/partials/*.html` |
+
+| Area                         | Location                                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------------------- |
+| Shell                        | `layouts/_default/baseof.html`                                                                    |
+| Home                         | `layouts/_default/home.html` + `layouts/partials/home-section-*.html`                             |
+| Lists / singles              | `layouts/_default/list.html`, `single.html`, kind-specific under `posts/`, `papers/`, `projects/` |
+| About                        | `layouts/about/list.html`                                                                         |
+| Experience                   | `layouts/experience/list.html`                                                                    |
+| Tags                         | `layouts/taxonomy/list.html`, `terms.html`                                                        |
+| Header / footer / breadcrumb | `layouts/partials/*.html`                                                                         |
+
 
 ## Browser Support
 
@@ -331,7 +335,8 @@ MIT — use freely. See [LICENSE](LICENSE) for details.
 ## Author
 
 **Sharad Raj**
-- Website: [sharadraj.com](https://sharadraj.com)
+
+- Website: [sharadraj.com](https://sharadraj.in)
 - GitHub: [@sharadcodes](https://github.com/sharadcodes)
 - LinkedIn: [srsmaurya](https://www.linkedin.com/in/srsmaurya)
 
