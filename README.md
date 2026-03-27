@@ -332,83 +332,139 @@ weight: 1
 Description…
 ```
 
+#### Front matter fields
+
+- **`title`**: Job title or role name
+- **`company`**: Organization name
+- **`period`**: Display string (e.g., "2024 – Present")
+- **`date`**: ISO date for sorting (earliest first)
+- **`weight`**: Sort order (lower numbers appear first)
+
 ## Navigation and URLs
 
-- **Home** and **About** appear in the header on inner pages only.
-- Internal links use relative permalinks suitable for any `baseURL`.
+### Header and footer
 
-Generated sections (default paths):
+- **Home** and **About** appear in the header on inner pages only
+- Internal links use relative permalinks suitable for any `baseURL`
 
+### Generated sections
 
-| Path            | Content             |
-| --------------- | ------------------- |
-| `/posts/`       | Post list           |
-| `/papers/`      | Paper list          |
-| `/projects/`    | Project list        |
-| `/experience/`  | Experience list     |
-| `/about/`       | About page          |
-| `/tags/`        | All tags            |
+Default paths for content types:
+
+| Path | Content |
+|------|---------|
+| `/posts/` | Post list |
+| `/papers/` | Paper list |
+| `/projects/` | Project list |
+| `/experience/` | Experience list |
+| `/about/` | About page |
+| `/tags/` | All tags |
 | `/tags/<name>/` | Items with that tag |
-
-
 ## Customization
 
-- **Colors, spacing, mobile rules**: `static/css/style.css` (in this theme repo)
-- **Font**: `layouts/_default/baseof.html` (Google Fonts link)
-- **Icons**: [Bootstrap Icons](https://icons.getbootstrap.com/) — theme uses names like `bi-house`, `bi-mortarboard` (Scholar), etc.
+### Styling
+
+**Colors, spacing, mobile rules:**
+- File: `static/css/style.css`
+- Edit CSS variables at the top of the file
+- Rebuild with `hugo` to see changes
+
+### Typography
+
+**Font selection:**
+- File: `layouts/_default/baseof.html`
+- Change Google Fonts import link
+- Adjust font-family in `static/css/style.css`
+
+### Icons
+
+**Icon library:** [Bootstrap Icons](https://icons.getbootstrap.com/)
+
+Theme uses icon names like:
+- `bi-house` — home
+- `bi-mortarboard` — education/scholar
+- `bi-github` — GitHub
+- `bi-linkedin` — LinkedIn
+- `bi-twitter-x` — Twitter/X
+
+Browse all available icons at [icons.getbootstrap.com](https://icons.getbootstrap.com/)
 
 ## Theme Layout Reference
 
+### Template files
 
-| Area                         | Location                                                                                          |
-| ---------------------------- | ------------------------------------------------------------------------------------------------- |
-| Shell                        | `layouts/_default/baseof.html`                                                                    |
-| Home                         | `layouts/_default/home.html` + `layouts/partials/home-section-*.html`                             |
-| Lists / singles              | `layouts/_default/list.html`, `single.html`, kind-specific under `posts/`, `papers/`, `projects/` |
-| About                        | `layouts/about/list.html`                                                                         |
-| Experience                   | `layouts/experience/list.html`                                                                    |
-| Tags                         | `layouts/taxonomy/list.html`, `terms.html`                                                        |
-| Header / footer / breadcrumb | `layouts/partials/*.html`                                                                         |
+| Area | Location |
+|------|----------|
+| Shell (base HTML) | `layouts/_default/baseof.html` |
+| Home page | `layouts/_default/home.html` + `layouts/partials/home-section-*.html` |
+| List pages | `layouts/_default/list.html` |
+| Single pages | `layouts/_default/single.html` |
+| Posts | `layouts/posts/single.html` |
+| Papers | `layouts/papers/single.html` |
+| Projects | `layouts/projects/single.html` |
+| About | `layouts/about/list.html` |
+| Experience | `layouts/experience/list.html` |
+| Tags | `layouts/taxonomy/list.html`, `terms.html` |
+| Header | `layouts/partials/header.html` |
+| Footer | `layouts/partials/footer.html` |
+| Breadcrumb | `layouts/partials/breadcrumb.html` |
 
+### Partial templates
 
+Home page sections:
+- `layouts/partials/home-section-about.html`
+- `layouts/partials/home-section-experience.html`
+- `layouts/partials/home-section-posts.html`
+- `layouts/partials/home-section-papers.html`
+- `layouts/partials/home-section-projects.html`
+
+Utilities:
+- `layouts/partials/math.html` — KaTeX loader
+- `layouts/partials/head-custom.html` — Custom head content (override in your site)
 ## Browser Support
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile-first responsive design
-- No JavaScript dependencies
+- ✓ Modern browsers (Chrome, Firefox, Safari, Edge)
+- ✓ Mobile-first responsive design
+- ✓ No JavaScript dependencies
+- ✓ Works without JavaScript enabled
 
 ## Performance
 
-- Static HTML output (no runtime overhead)
-- Minimal CSS (~8 KB minified)
-- Optimized for fast page loads
-- Lazy-loaded images
+- ✓ Static HTML output (no runtime overhead)
+- ✓ Minimal CSS (~8 KB minified)
+- ✓ Optimized for fast page loads
+- ✓ Lazy-loaded images
+- ✓ No external dependencies or CDN calls (except Google Fonts)
 
 ## Contributing
 
-Found a bug or have a feature request? Open an [issue](https://github.com/sharadcodes/ananta-theme-hugo/issues) or submit a [pull request](https://github.com/sharadcodes/ananta-theme-hugo/pulls).
+Found a bug or have a feature request?
+
+- **Report issues:** [GitHub Issues](https://github.com/sharadcodes/ananta-theme-hugo/issues)
+- **Submit changes:** [GitHub Pull Requests](https://github.com/sharadcodes/ananta-theme-hugo/pulls)
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and updates.
+See [CHANGELOG.md](CHANGELOG.md) for version history, updates, and breaking changes.
 
 ## License
 
-MIT — use freely. See [LICENSE](LICENSE) for details.
+MIT — use freely. See [LICENSE](LICENSE) for full details.
 
 ## Credits
 
-- [Alegreya](https://fonts.google.com/specimen/Alegreya) — elegant serif font
-- [Bootstrap Icons](https://icons.getbootstrap.com/) — comprehensive icon library
-- [Hugo](https://gohugo.io/) — static site generator
+- [Alegreya](https://fonts.google.com/specimen/Alegreya) — elegant serif font by Juan Pablo del Peral
+- [Bootstrap Icons](https://icons.getbootstrap.com/) — comprehensive icon library by Bootstrap
+- [Hugo](https://gohugo.io/) — static site generator by the Hugo community
 
 ## Author
 
 **Sharad Raj**
 
-- Website: [sharadraj.com](https://sharadraj.in)
+- Website: [sharadraj.com](https://sharadraj.com)
 - GitHub: [@sharadcodes](https://github.com/sharadcodes)
 - LinkedIn: [srsmaurya](https://www.linkedin.com/in/srsmaurya)
+- Email: [hello@sharadraj.com](mailto:hello@sharadraj.com)
 
 ---
 
