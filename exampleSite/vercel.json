@@ -1,8 +1,5 @@
 {
   "buildCommand": "bash build.sh",
   "outputDirectory": "public",
-  "framework": "hugo",
-  "env": {
-    "HUGO_VERSION": "0.159.1"
-  }
+  "framework": "hugo"
 }
