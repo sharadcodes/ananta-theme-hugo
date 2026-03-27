@@ -4,8 +4,8 @@
 {{- $caption := .Get "caption" | default (.Get 2) | default "" -}}
 {{- $href := .Get "href" | default (.Get "link") -}}
 {{- $class := .Get "class" | default "" -}}
-{{- $isAbsURL := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
-{{- $imgSrc := cond $isAbsURL $src (relURL $src) -}}
+{{- $isAbsURL := or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "data:image/") -}}
+{{- $imgSrc := cond $isAbsURL $src (strings.TrimPrefix "/" $src | relURL) -}}
 <figure class="content-fig{{ if $class }} {{ $class }}{{ end }}">
   {{- if $href -}}
   <a href="{{ $href | safeURL }}" class="content-fig__link">{{- end -}}

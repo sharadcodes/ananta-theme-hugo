@@ -9,7 +9,7 @@
     {{ $profileImageFit := .Site.Params.profileImageFit | default "cover" | lower }}
     <div class="profile-banner profile-fit-{{ $profileImageFit }}">
       <img
-        src="{{ if or (hasPrefix $profileImage "http://") (hasPrefix $profileImage "https://") }}{{ $profileImage }}{{ else }}{{ $profileImage | relURL }}{{ end }}"
+        src="{{ if or (hasPrefix $profileImage "http://") (hasPrefix $profileImage "https://") }}{{ $profileImage }}{{ else }}{{ strings.TrimPrefix "/" $profileImage | relURL }}{{ end }}"
         alt="{{ .Site.Params.profileImageAlt | default (print .Site.Title " profile photo") }}"
       />
     </div>
