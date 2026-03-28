@@ -323,8 +323,16 @@ a.nav-links__current:hover {
   font-size: 0.85rem;
 }
 
-.content-kind--post,
-.content-kind--paper,
+.content-kind--post {
+  background-color: #e8f1f8;
+  color: #1e5a7a;
+}
+
+.content-kind--paper {
+  background-color: #f3efe6;
+  color: #5c4a32;
+}
+
 .content-kind--project,
 .content-kind--page {
   background-color: #eaeaea;
