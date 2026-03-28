@@ -28,7 +28,7 @@ summaryLength = 30
 
   # Header nav order (left to right). Valid keys: posts, papers, projects, about (home uses site title link)
   # Omit a key to hide that link. "about" is hidden automatically on the homepage.
-  navOrder = ["posts", "papers", "projects", "about"]
+  navOrder = ["home", "posts", "papers", "projects", "about"]
   
   # Social Links
   twitter = "sharadraj"

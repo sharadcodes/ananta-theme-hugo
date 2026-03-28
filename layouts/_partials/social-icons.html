@@ -1,0 +1,24 @@
+{{- $p := .Site.Params -}}
+{{- $show := or $p.twitter $p.linkedin $p.googleScholar $p.github $p.email -}}
+{{- if $show -}}
+<nav class="header-social-wrap" aria-label="Social links">
+  <ul class="header-social">
+    {{- with $p.twitter -}}
+    <li><a href="https://x.com/{{ . }}" class="header-social__link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a></li>
+    {{- end -}}
+    {{- with $p.linkedin -}}
+    <li><a href="https://linkedin.com/in/{{ . }}" class="header-social__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+    {{- end -}}
+    {{- with $p.googleScholar -}}
+    {{- $gs := . -}}
+    <li><a href="{{ if or (hasPrefix $gs "http://") (hasPrefix $gs "https://") }}{{ $gs }}{{ else }}https://scholar.google.com/citations?user={{ $gs }}{{ end }}" class="header-social__link" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="bi bi-mortarboard" aria-hidden="true"></i></a></li>
+    {{- end -}}
+    {{- with $p.github -}}
+    <li><a href="https://github.com/{{ . }}" class="header-social__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a></li>
+    {{- end -}}
+    {{- with $p.email -}}
+    <li><a href="mailto:{{ . }}" class="header-social__link" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a></li>
+    {{- end -}}
+  </ul>
+</nav>
+{{- end -}}

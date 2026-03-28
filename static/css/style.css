@@ -140,6 +140,47 @@ header p {
   margin-bottom: 0;
 }
 
+/* Header social (icon-only; labels via aria-label) */
+.header-social-wrap {
+  margin-bottom: 1rem;
+}
+
+.header-intro .header-social-wrap {
+  margin-top: 0.75rem;
+}
+
+.header-social {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.header-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: 6px;
+  color: #444;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header-social__link:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.header-social__link .bi {
+  font-size: 1.15rem;
+}
+
 /* Navigation */
 .nav-links {
   list-style: none;
@@ -153,6 +194,24 @@ header p {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Current page: still an <a> for semantics, non-interactive */
+a.nav-links__current {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #999;
+  cursor: default;
+  user-select: none;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+a.nav-links__current:hover {
+  color: #999;
+  text-decoration: none;
 }
 
 .nav-links .bi {
@@ -1128,18 +1187,16 @@ footer {
   padding-top: 2rem;
   border-top: 1px solid #ddd;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+}
+
+footer .footer-meta {
+  margin: 0;
+  text-align: center;
 }
 
 footer a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-right: 1.5rem;
-}
-
-footer .bi {
-  font-size: 1rem;
+  color: #0066cc;
 }
 
 /* Links Section */
@@ -1169,6 +1226,7 @@ footer .bi {
 /* Responsive */
 @media (max-width: 768px) {
   body {
+    --profile-pad: 1.25rem;
     padding: 1rem max(1rem, env(safe-area-inset-right)) 1rem max(1rem, env(safe-area-inset-left));
   }
 
@@ -1186,11 +1244,13 @@ footer .bi {
     padding-bottom: 1.25rem;
   }
 
+  /* Photo above title/tagline on all pages (matches DOM: intro, then profile; reverse stacks profile first) */
   .header-top {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    /* Spacing around the profile uses margin on .profile-banner only so vertical matches horizontal gutter */
+    gap: 0;
     margin-bottom: 1.25rem;
   }
 
@@ -1205,15 +1265,19 @@ footer .bi {
     margin-right: auto;
   }
 
-  /* Home: photo first, then name — reads as a hero on small screens */
-  body.is-home .header-top {
-    flex-direction: column-reverse;
+  /*
+   * Square profile: horizontal inset = (100% - width) / 2 should match --profile-pad when possible.
+   * Use full calc width (capped) so narrow viewports do not leave huge side gutters vs margin-block.
+   */
+  .profile-banner {
+    width: calc(100% - 2 * var(--profile-pad));
+    max-width: min(320px, 100%);
+    margin-inline: auto;
+    margin-block: var(--profile-pad);
   }
 
-  .profile-banner {
-    width: 100%;
-    max-width: min(240px, 70vw);
-    margin-inline: auto;
+  .header-social {
+    justify-content: center;
   }
 
   .nav-links {
@@ -1235,7 +1299,7 @@ footer .bi {
     border-radius: 6px;
   }
 
-  .nav-links a:active {
+  .nav-links a:not(.nav-links__current):active {
     background-color: rgba(0, 0, 0, 0.05);
   }
 

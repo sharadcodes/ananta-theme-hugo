@@ -3,6 +3,7 @@
     <div class="header-intro">
       <h1><a href="{{ site.Home.RelPermalink }}" class="site-title-link">{{ .Site.Title }}</a></h1>
       {{ if .Site.Params.tagline }}<p>{{ .Site.Params.tagline }}</p>{{ end }}
+      {{ partial "social-icons.html" . }}
     </div>
     {{ if .Site.Params.profileImage }}
     {{ $profileImage := .Site.Params.profileImage }}
@@ -15,19 +16,27 @@
     </div>
     {{ end }}
   </div>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Primary">
     {{ $p := . }}
-    {{ $order := .Site.Params.navOrder | default (slice "posts" "papers" "projects" "about") }}
+    {{- $sec := $p.Section -}}
+    {{- $typ := $p.Type -}}
+    {{- $herePosts := or (eq $sec "posts") (eq $typ "posts") -}}
+    {{- $herePapers := or (eq $sec "papers") (eq $typ "papers") -}}
+    {{- $hereProjects := or (eq $sec "projects") (eq $typ "projects") -}}
+    {{- $hereAbout := eq $sec "about" -}}
+    {{ $order := .Site.Params.navOrder | default (slice "home" "posts" "papers" "projects" "about") }}
     {{ range $order }}
       {{ $k := . | lower }}
-      {{ if eq $k "posts" }}
-    <li><a href="{{ "posts/" | relLangURL }}"><i class="bi bi-pencil-square"></i> Posts</a></li>
+      {{ if eq $k "home" }}
+    <li><a href="{{ site.Home.RelPermalink }}"{{ if $p.IsHome }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-house" aria-hidden="true"></i> Home</a></li>
+      {{ else if eq $k "posts" }}
+    <li><a href="{{ "posts/" | relLangURL }}"{{ if $herePosts }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-pencil-square" aria-hidden="true"></i> Posts</a></li>
       {{ else if eq $k "papers" }}
-    <li><a href="{{ "papers/" | relLangURL }}"><i class="bi bi-file-earmark-pdf"></i> Papers</a></li>
+    <li><a href="{{ "papers/" | relLangURL }}"{{ if $herePapers }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Papers</a></li>
       {{ else if eq $k "projects" }}
-    <li><a href="{{ "projects/" | relLangURL }}"><i class="bi bi-briefcase"></i> Projects</a></li>
-      {{ else if and (eq $k "about") (not $p.IsHome) }}
-    <li><a href="{{ "about/" | relLangURL }}"><i class="bi bi-info-circle"></i> About</a></li>
+    <li><a href="{{ "projects/" | relLangURL }}"{{ if $hereProjects }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-briefcase" aria-hidden="true"></i> Projects</a></li>
+      {{ else if eq $k "about" }}
+    <li><a href="{{ "about/" | relLangURL }}"{{ if $hereAbout }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-info-circle" aria-hidden="true"></i> About</a></li>
       {{ end }}
     {{ end }}
   </nav>

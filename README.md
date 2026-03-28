@@ -15,8 +15,8 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 - **Tags** with list/term pages and kind filters (post / paper / project) where relevant
 - **Breadcrumbs** on inner pages (Home → section → page)
 - Optional **profile image** in the header (URL or static path); fit modes `fill`, `contain`, `cover`
-- **Footer social links**: Twitter/X, LinkedIn, **Google Scholar**, GitHub, email
-- **Responsive layout**: mobile header with centered block, larger tap targets, homepage shows **photo above title** on narrow viewports
+- **Header social icons** (icon-only): X (Twitter), LinkedIn, **Google Scholar**, GitHub, email — same `[params]` keys; rendered **below the tagline** in the intro column (included from `header.html`); **footer** is copyright + Hugo credit only
+- **Responsive layout**: mobile header with centered block, larger tap targets; **photo above title** on narrow viewports whenever a profile image is set
 - **Math support**: KaTeX for LaTeX equations
 - **Code highlighting**: Chroma with line numbers and language-specific styling
 - **Lazy-loaded images** and optimized performance
@@ -104,11 +104,11 @@ summaryLength = 30
   # Omit a key to hide that block on the home page.
   homeSectionOrder = ["about", "experience", "posts", "papers", "projects"]
 
-  # Header links, left to right. Keys: posts, papers, projects, about (no home — site title links to /)
-  # Omit a key to remove that link. about is hidden on the homepage.
-  navOrder = ["posts", "papers", "projects", "about"]
+  # Header links, left to right. Keys: home, posts, papers, projects, about
+  # Omit a key to remove that link. All items show on every page; the active item stays an <a> but is greyed and non-clickable (.nav-links__current).
+  navOrder = ["home", "posts", "papers", "projects", "about"]
 
-  twitter = "handle"            # optional — X (Twitter) handle; footer links to x.com
+  twitter = "handle"            # optional — X (Twitter) handle; header icon links to x.com
   linkedin = "handle"           # optional — linkedin.com/in/{handle}
   googleScholar = ""            # optional — Scholar user ID or full profile URL
   github = "handle"             # optional
@@ -130,7 +130,7 @@ Set `googleScholar` to either:
 `https://scholar.google.com/citations?user=**AbCdEfGh**` → use `AbCdEfGh`, or  
 - The **full profile URL** if it starts with `http://` or `https://` (any regional domain).
 
-Leave empty to hide the footer link.
+Leave empty to hide the header icon.
 
 ### Extra `<head>` content
 
@@ -346,7 +346,8 @@ Description…
 
 ### Header and footer
 
-- **Home** and **About** appear in the header on inner pages only
+- **Nav** lists every `navOrder` entry on all pages; the current section uses `aria-current="page"`, `tabindex="-1"`, `aria-disabled="true"`, and `.nav-links__current` (grey, `pointer-events: none`)
+- **Social** icons (if `[params]` are set) appear in the header above the section nav; the footer only shows copyright and “Built with Hugo”
 - Internal links use relative permalinks suitable for any `baseURL`
 
 ### Generated sections
@@ -389,8 +390,8 @@ Default paths for content types:
 
 Examples that appear in the bundled templates (not exhaustive):
 
-- **Nav:** `bi-pencil-square`, `bi-file-earmark-pdf`, `bi-briefcase`, `bi-info-circle`
-- **Footer:** `bi-twitter-x` (X; `twitter` site param), `bi-linkedin`, `bi-mortarboard` (Google Scholar), `bi-github`, `bi-envelope`
+- **Nav:** `bi-house`, `bi-pencil-square`, `bi-file-earmark-pdf`, `bi-briefcase`, `bi-info-circle` (current page greyed out via `.nav-links__current`)
+- **Header social:** `bi-twitter-x`, `bi-linkedin`, `bi-mortarboard`, `bi-github`, `bi-envelope` (see `layouts/_partials/social-icons.html`)
 - **Lists / meta:** `bi-arrow-right`, `bi-calendar`, `bi-clock`, `bi-tag`, `bi-check-circle`
 - **Content kinds (tag pages):** `bi-file-text`, etc.
 
@@ -417,6 +418,7 @@ Browse all names at [icons.getbootstrap.com](https://icons.getbootstrap.com/)
 | `fig` shortcode              | `layouts/_shortcodes/fig.html`                                |
 | Markdown images              | `layouts/_markup/render-image.html`                           |
 | Header                       | `layouts/_partials/header.html`                               |
+| Header social icons          | `layouts/_partials/social-icons.html`                         |
 | Footer                       | `layouts/_partials/footer.html`                               |
 | Breadcrumb                   | `layouts/_partials/breadcrumb.html`                           |
 
@@ -433,6 +435,7 @@ Home page sections:
 
 Utilities:
 
+- `layouts/_partials/social-icons.html` — Icon-only social row below title/tagline in the intro block (driven by site `[params]`; included from `header.html`)
 - `layouts/_partials/math.html` — KaTeX loader
 - `layouts/_partials/head-custom.html` — Custom head content (override in your site)
 
