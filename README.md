@@ -2,7 +2,7 @@
 
 Minimal, research-oriented Hugo theme with **self-hosted [Alegreya](https://fonts.google.com/specimen/Alegreya)** (WOFF2, latin + latin-ext under `static/fonts/`, loaded from `style.css` to avoid a render-blocking Google Fonts chain) and [Bootstrap Icons](https://icons.getbootstrap.com/) (stylesheet deferred so icon font is not on the critical path). Suited to academics and engineers who want a small, readable portfolio.
 
-[License: MIT](https://opensource.org/licenses/MIT) | [Hugo](https://gohugo.io)
+[License: MIT](https://opensource.org/licenses/MIT) | [Hugo](https://gohugo.io) | Theme **v1.1.0** — see [CHANGELOG.md](CHANGELOG.md) for release notes.
 
 ## About the name *Ananta* (Hindi / Sanskrit)
 
@@ -19,8 +19,10 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 - **Responsive layout**: mobile header with centered block, larger tap targets; **photo above title** on narrow viewports whenever a profile image is set
 - **Math support**: KaTeX for LaTeX equations
 - **Code highlighting**: Chroma with line numbers and language-specific styling
-- **Lazy-loaded images** and optimized performance
+- **Lazy-loaded images** in markdown / `fig` shortcode (`loading="lazy"`, `decoding="async"`)
+- **Performance**: header profile photo can use `preconnect` / `preload` and `fetchpriority="high"`; self-hosted Alegreya WOFF2 files are preloaded; **Chroma** and **Bootstrap Icons** CSS are **non-render-blocking** (see `layouts/baseof.html`)
 - **SEO and RSS**: `<meta name="description">` (page `description`, else plain summary, else `params.description`), canonical URL, Open Graph and Twitter Cards via Hugo internals, and `<link rel="alternate">` for RSS/Atom on pages that have feed output formats
+- **Accessibility**: primary nav is a semantic `<ul><li>` list; the footer “Built with Hugo” link uses an underline and stronger contrast so it is not distinguished by color alone
 
 ## Quick Start
 
@@ -394,9 +396,8 @@ Default paths for content types:
 
 **Font selection:**
 
-- File: `layouts/baseof.html`
-- Change Google Fonts import link
-- Adjust font-family in `static/css/style.css`
+- Body font is **self-hosted Alegreya** (WOFF2) under `static/fonts/` with `@font-face` rules at the top of `static/css/style.css` (latin + latin-ext subsets). Replace or extend those files and rules if you switch typeface; optional `<link rel="preload" as="font" …>` entries live in `layouts/baseof.html`.
+- Adjust `font-family` in `static/css/style.css` (e.g. `body`, headings) if you rename the family.
 
 ### Icons
 
