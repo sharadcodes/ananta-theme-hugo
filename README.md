@@ -108,7 +108,7 @@ summaryLength = 30
   # Omit a key to remove that link. about is hidden on the homepage.
   navOrder = ["posts", "papers", "projects", "about"]
 
-  twitter = "handle"            # optional
+  twitter = "handle"            # optional — X (Twitter) handle; footer links to x.com
   linkedin = "handle"           # optional — linkedin.com/in/{handle}
   googleScholar = ""            # optional — Scholar user ID or full profile URL
   github = "handle"             # optional
@@ -387,15 +387,14 @@ Default paths for content types:
 
 **Icon library:** [Bootstrap Icons](https://icons.getbootstrap.com/)
 
-Theme uses icon names like:
+Examples that appear in the bundled templates (not exhaustive):
 
-- `bi-house` — home
-- `bi-mortarboard` — education/scholar
-- `bi-github` — GitHub
-- `bi-linkedin` — LinkedIn
-- `bi-twitter-x` — Twitter/X
+- **Nav:** `bi-pencil-square`, `bi-file-earmark-pdf`, `bi-briefcase`, `bi-info-circle`
+- **Footer:** `bi-twitter-x` (X; `twitter` site param), `bi-linkedin`, `bi-mortarboard` (Google Scholar), `bi-github`, `bi-envelope`
+- **Lists / meta:** `bi-arrow-right`, `bi-calendar`, `bi-clock`, `bi-tag`, `bi-check-circle`
+- **Content kinds (tag pages):** `bi-file-text`, etc.
 
-Browse all available icons at [icons.getbootstrap.com](https://icons.getbootstrap.com/)
+Browse all names at [icons.getbootstrap.com](https://icons.getbootstrap.com/)
 
 ## Theme Layout Reference
 
@@ -471,7 +470,7 @@ MIT — use freely. See [LICENSE](LICENSE) for full details.
 
 **Sharad Raj**
 
-- Website: [sharadraj.in](https://sharadraj.com)
+- Website: [sharadraj.in](https://sharadraj.in)
 - GitHub: [@sharadcodes](https://github.com/sharadcodes)
 - LinkedIn: [srsmaurya](https://www.linkedin.com/in/srsmaurya)
 

@@ -88,6 +88,7 @@ header {
 
 .profile-banner {
   width: 260px;
+  aspect-ratio: 1;
   border: 1px solid #ddd;
   border-radius: 4px;
   overflow: hidden;
@@ -96,16 +97,27 @@ header {
 
 .profile-banner img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 
+/* object-fit matches profileImageFit in header.html: cover | contain | fill */
+.profile-banner.profile-fit-cover img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-banner.profile-fit-contain {
+  background-color: #f0f0f0;
+}
+
 .profile-banner.profile-fit-contain img {
-  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .profile-banner.profile-fit-fill img {
-  height: auto;
+  object-fit: fill;
 }
 
 header h1 {
