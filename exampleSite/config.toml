@@ -31,12 +31,12 @@ summaryLength = 30
   navOrder = ["home", "posts", "papers", "projects", "about"]
   
   # Social Links
-  twitter = "sharadraj"
+  twitter = "iamsharadraj"
   linkedin = "srsmaurya"
   # Google Scholar: the user= value from your profile URL, or paste the full profile URL
   googleScholar = "lMMbNBMAAAAJ"
-  github = "sharadraj"
-  email = "hello@sharadraj.com"
+  github = "sharadcodes"
+  email = "hello@example.com"
   # KaTeX: false = load only on pages with `params.math: true` in front matter; true = every page
   math = false
 
