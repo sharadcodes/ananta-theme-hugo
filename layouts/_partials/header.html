@@ -12,6 +12,10 @@
       <img
         src="{{ if or (hasPrefix $profileImage "http://") (hasPrefix $profileImage "https://") }}{{ $profileImage }}{{ else }}{{ strings.TrimPrefix "/" $profileImage | relURL }}{{ end }}"
         alt="{{ .Site.Params.profileImageAlt | default (print .Site.Title " profile photo") }}"
+        width="260"
+        height="260"
+        fetchpriority="high"
+        decoding="async"
       />
     </div>
     {{ end }}

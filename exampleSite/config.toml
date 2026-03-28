@@ -6,6 +6,8 @@ summaryLength = 30
 
 [params]
   tagline = "AI Research & Engineering"
+  # Fallback <meta name="description"> when a page has no description or summary (e.g. thin taxonomy pages)
+  description = "Sharad Raj — AI research and engineering: agentic systems, RAG and LLMs, MLOps, and Web GIS."
   # Optional rectangular profile image at top.
   # Put your image in /static/images and set path like "images/profile.jpg"
   profileImage = "https://avatars2.githubusercontent.com/u/36638057?s=460&u=0cbe4fd6b5a3655d91b3eb86db834d0829a0c086&v=4"

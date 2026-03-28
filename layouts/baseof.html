@@ -3,16 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{- with .Site.Params.profileImage }}
+  {{- $pimg := . -}}
+  {{- if or (hasPrefix $pimg "http://") (hasPrefix $pimg "https://") -}}
+  {{- with urls.Parse $pimg -}}
+  <link rel="preconnect" href="{{ .Scheme }}://{{ .Host }}" crossorigin />
+  {{- end -}}
+  <link rel="preload" as="image" href="{{ $pimg | safeURL }}" />
+  {{- else -}}
+  <link rel="preload" as="image" href="{{ strings.TrimPrefix "/" $pimg | relURL }}" />
+  {{- end -}}
+  {{- end -}}
+  <link rel="preload" href="{{ "fonts/alegreya-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="{{ "fonts/alegreya-latin-ext.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <title>{{ .Title }} | {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="{{ "css/chroma-github.css" | relURL }}" />
+  {{- if .Description }}
+  <meta name="description" content="{{ .Description | htmlEscape }}" />
+  {{- else }}
+  {{- $summaryDesc := "" -}}
+  {{- with .Summary }}{{ $summaryDesc = . | plainify | truncate 160 | strings.TrimSpace }}{{ end -}}
+  {{- if ne $summaryDesc "" }}
+  <meta name="description" content="{{ $summaryDesc | htmlEscape }}" />
+  {{- else if .Site.Params.description }}
+  <meta name="description" content="{{ .Site.Params.description | htmlEscape }}" />
+  {{- end }}
+  {{- end }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{- range .AlternativeOutputFormats }}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ .Name | htmlEscape }}" />
+  {{- end }}
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
-  <style>
-    body {
-      font-family: 'Alegreya', serif;
-    }
-  </style>
+  {{- $chroma := "css/chroma-github.css" | relURL -}}
+  {{- $icons := "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" -}}
+  <link rel="stylesheet" href="{{ $chroma }}" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="{{ $chroma }}" /></noscript>
+  <link rel="stylesheet" href="{{ $icons | safeURL }}" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="{{ $icons | safeURL }}" /></noscript>
   {{ partial "head-custom.html" . }}
 </head>
 <body class="{{ if .IsHome }}is-home{{ end }}">
