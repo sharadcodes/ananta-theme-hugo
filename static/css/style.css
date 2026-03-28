@@ -255,11 +255,13 @@ header p {
 }
 
 /* Navigation */
-.nav-links {
+.nav-links ul {
   list-style: none;
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
@@ -1276,8 +1278,16 @@ footer .footer-meta {
   text-align: center;
 }
 
-footer a {
-  color: #0066cc;
+/* Underline + sufficient contrast: links not identifiable by color alone (WCAG 1.4.1) */
+footer .footer-meta a {
+  color: #0d4f8c;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+footer .footer-meta a:hover {
+  color: #0a3d6e;
+  text-decoration-thickness: 2px;
 }
 
 /* Links Section */
@@ -1361,7 +1371,7 @@ footer a {
     justify-content: center;
   }
 
-  .nav-links {
+  .nav-links ul {
     justify-content: center;
     gap: 0.35rem 0.65rem;
     flex-wrap: wrap;
@@ -1422,7 +1432,7 @@ footer a {
     font-size: 1.65rem;
   }
 
-  .nav-links {
+  .nav-links ul {
     gap: 0.25rem 0.45rem;
   }
 

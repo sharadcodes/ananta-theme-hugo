@@ -21,6 +21,7 @@
     {{ end }}
   </div>
   <nav class="nav-links" aria-label="Primary">
+    <ul>
     {{ $p := . }}
     {{- $sec := $p.Section -}}
     {{- $typ := $p.Type -}}
@@ -43,5 +44,6 @@
     <li><a href="{{ "about/" | relLangURL }}"{{ if $hereAbout }} class="nav-links__current" aria-current="page" tabindex="-1" aria-disabled="true"{{ end }}><i class="bi bi-info-circle" aria-hidden="true"></i> About</a></li>
       {{ end }}
     {{ end }}
+    </ul>
   </nav>
 </header>
