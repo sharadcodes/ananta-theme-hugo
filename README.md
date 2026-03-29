@@ -24,6 +24,10 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 - **SEO and RSS**: `<meta name="description">` (page `description`, else plain summary, else `params.description`), canonical URL, Open Graph and Twitter Cards via Hugo internals, and `<link rel="alternate">` for RSS/Atom on pages that have feed output formats
 - **Accessibility**: primary nav is a semantic `<ul><li>` list; the footer “Built with Hugo” link uses an underline and stronger contrast so it is not distinguished by color alone
 
+## Demo
+
+![images/demo.png](images/demo.png)
+
 ## Quick Start
 
 ### Try the demo locally
