@@ -28,7 +28,7 @@ In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** a
 
 ## Demo
 
-![images/demo.png](images/demo.png)
+![images/demo.png](https://github.com/sharadcodes/ananta-theme-hugo/blob/main/images/demo.png?raw=true)
 
 ## Quick Start
 
