@@ -4,6 +4,8 @@ Minimal, research-oriented Hugo theme with **self-hosted [Alegreya](https://font
 
 [License: MIT](https://opensource.org/licenses/MIT) | [Hugo](https://gohugo.io) | Theme **v1.1.0** — see [CHANGELOG.md](CHANGELOG.md) for release notes.
 
+## [Click to see Live Demo](https://sharadcodes.github.io/ananta-theme-hugo/)
+
 ## About the name *Ananta* (Hindi / Sanskrit)
 
 In **Hindi** and **Sanskrit**, the word is usually written **अनन्त** and read ***anant*** (sometimes spelled *ananta* in Roman type). It is built from a negating prefix and *ant* ("end" / "limit"), so it literally means **"without end."** Common glosses you will see in dictionaries are **infinite**, **endless**, **boundless**, or **eternal**. This theme uses the name to suggest a site that can keep growing—posts, papers, and projects without a fixed "stopping point."
